@@ -98,13 +98,18 @@ namespace Light
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (moving >= 0)
+            if (moving >= 0 && !OffScreen(e.Location))
             {
                 points[moving] = e.Location;
             }
         }
 
-        private Color Multiply(Color c1, Color c2, double d)
+        private bool OffScreen(Point p)
+        {
+            return p.X < 8 || p.Y < 8 || p.X > Screen.PrimaryScreen.WorkingArea.Width - 8 || p.Y > Screen.PrimaryScreen.WorkingArea.Height - 50;
+        }
+
+            private Color Multiply(Color c1, Color c2, double d)
         {
             return Color.FromArgb((int)(d * c1.R * c2.R / 255), (int)(d * c1.G * c2.G / 255), (int)(d * c1.B * c2.B / 255));
         }
