@@ -13,30 +13,34 @@ namespace Light
     public partial class Form1 : Form
     {
         Graphics g;
-        DirectBitmap bmp = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
-        Point[] points = { new Point(10, 10), new Point(20, 200), new Point(200, 20), new Point(300, 300), new Point(50, 250), new Point(250, 50) };
-        Pen pen = new Pen(Brushes.Black, 2);
+        /// <summary>
+        /// Parameter defining animated light source position.
+        /// Incremented after every frame with animated light source.
+        /// </summary>
+        double t = 7;
+        /// <summary>
+        /// Which vertex is moving (-1 if none)
+        /// </summary>
         int moving = -1;
-        List<Edge> AET = new List<Edge>();
+        /// <summary>
+        /// Colors of two triangles
+        /// </summary>
         Color[] colors = new Color[2];
         Color lightColor = Color.White;
+        /// <summary>
+        /// Position of light source (x,y,z) where z > 0
+        /// </summary>
         double[] lightPos = new double[3];
-        double t = 7;
-
-        class Edge
-        {
-            public Edge(int yMax, double xMin, double delta, Edge nextEdge)
-            {
-                y = yMax;
-                x = xMin;
-                d = delta;
-                next = nextEdge;
-            }
-            public int y;
-            public double x;
-            public double d;
-            public Edge next;
-        }
+        /// <summary>
+        /// Used in filling algorithm
+        /// </summary>
+        List<Edge> AET = new List<Edge>();
+        Pen pen = new Pen(Brushes.Black, 2);
+        DirectBitmap bmp = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+        /// <summary>
+        /// Vertices of two triangles
+        /// </summary>
+        Point[] points = { new Point(10, 10), new Point(20, 200), new Point(200, 20), new Point(300, 300), new Point(50, 250), new Point(250, 50) };
 
         public Form1()
         {
@@ -51,7 +55,11 @@ namespace Light
             constantLight.Checked = true;
             Redraw();
         }
-
+        
+        /// <summary>
+        /// Draws a new Frame.
+        /// Triggered every 40ms.
+        /// </summary>
         private void Redraw()
         {
             g.Clear(Color.White);
@@ -71,60 +79,9 @@ namespace Light
             }
         }
 
-        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
-        {
-            if (e.Button != MouseButtons.Left) return;
-            for (int i = 0; i < 6; i++)
-            {
-                if (Distance(points[i], e.Location) < 8)
-                {
-                    moving = i;
-                    return;
-                }
-            }
-        }
-
-        private double Distance(Point p1, Point p2)
-        {
-            int a = p1.X - p2.X;
-            int b = p1.Y - p2.Y;
-            return Math.Sqrt(a * a + b * b);
-        }
-
-        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
-        {
-            moving = -1;
-        }
-
-        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
-        {
-            if (moving >= 0 && !OffScreen(e.Location))
-            {
-                points[moving] = e.Location;
-            }
-        }
-
         private bool OffScreen(Point p)
         {
             return p.X < 8 || p.Y < 8 || p.X > Screen.PrimaryScreen.WorkingArea.Width - 8 || p.Y > Screen.PrimaryScreen.WorkingArea.Height - 50;
-        }
-
-            private Color Multiply(Color c1, Color c2, double d)
-        {
-            return Color.FromArgb((int)(d * c1.R * c2.R / 255), (int)(d * c1.G * c2.G / 255), (int)(d * c1.B * c2.B / 255));
-        }
-
-        private double Cos(double[] v1, double[] v2)
-        {
-            double d = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
-            v1[0] /= d;
-            v1[1] /= d;
-            v1[2] /= d;
-            d = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
-            v2[0] /= d;
-            v2[1] /= d;
-            v2[2] /= d;
-            return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
         }
 
         private void Fill()
@@ -223,17 +180,61 @@ namespace Light
                 Edge e = new Edge(p2.Y, p1.X, (double)(p2.X - p1.X) / (p2.Y - p1.Y), ET[p1.Y]);
                 ET[p1.Y] = e;
             }
+
+            Color Multiply(Color c1, Color c2, double d)
+            {
+                return Color.FromArgb((int)(d * c1.R * c2.R / 255), (int)(d * c1.G * c2.G / 255), (int)(d * c1.B * c2.B / 255));
+            }
+
+            double Cos(double[] v1, double[] v2)
+            {
+                double d = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
+                v1[0] /= d;
+                v1[1] /= d;
+                v1[2] /= d;
+                d = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
+                v2[0] /= d;
+                v2[1] /= d;
+                v2[2] /= d;
+                return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+            }
         }
 
+        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button != MouseButtons.Left) return;
+            for (int i = 0; i < 6; i++)
+            {
+                if (Distance(points[i], e.Location) < 8)
+                {
+                    moving = i;
+                    return;
+                }
+            }
 
-        //T1
+            double Distance(Point p1, Point p2)
+            {
+                int a = p1.X - p2.X;
+                int b = p1.Y - p2.Y;
+                return Math.Sqrt(a * a + b * b);
+            }
+        }
+
+        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        {
+            moving = -1;
+        }
+
+        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (moving >= 0 && !OffScreen(e.Location))  points[moving] = e.Location;
+        }
+
+        //Triangle1
         private void flatToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            if(cd.ShowDialog() == DialogResult.OK)
-            {
-                colors[0] = cd.Color;
-            }
+            if (cd.ShowDialog() == DialogResult.OK) colors[0] = cd.Color;
             Redraw();
         }
 
@@ -242,14 +243,11 @@ namespace Light
 
         }
 
-        //T2
+        //Triangle2
         private void flatToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK)
-            {
-                colors[1] = cd.Color;
-            }
+            if (cd.ShowDialog() == DialogResult.OK) colors[1] = cd.Color;
             Redraw();
         }
 
@@ -258,13 +256,11 @@ namespace Light
 
         }
 
+        //Light
         private void colorToolStripMenuItem2_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK)
-            {
-                lightColor = cd.Color;
-            }
+            if (cd.ShowDialog() == DialogResult.OK) lightColor = cd.Color;
             Redraw();
         }
 
@@ -276,13 +272,31 @@ namespace Light
 
         private void variableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            constantLight.Checked = false;
             variableLight.Checked = true;
+            constantLight.Checked = false;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             Redraw();
+        }
+
+        /// <summary>
+        /// Used in filling algorithm
+        /// </summary>
+        class Edge
+        {
+            public Edge(int yMax, double xMin, double delta, Edge nextEdge)
+            {
+                y = yMax;
+                x = xMin;
+                d = delta;
+                next = nextEdge;
+            }
+            public int y;
+            public double x;
+            public double d;
+            public Edge next;
         }
     }
 }
