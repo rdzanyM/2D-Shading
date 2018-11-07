@@ -32,18 +32,18 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.lightToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.triangle1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.triangle2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.flatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.colorToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.positionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.constantLight = new System.Windows.Forms.ToolStripMenuItem();
             this.variableLight = new System.Windows.Forms.ToolStripMenuItem();
+            this.triangle1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.flatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.triangle2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.colorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.flatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.textureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
@@ -82,72 +82,10 @@
             this.lightToolStripMenuItem.Size = new System.Drawing.Size(46, 20);
             this.lightToolStripMenuItem.Text = "Light";
             // 
-            // triangle1ToolStripMenuItem
-            // 
-            this.triangle1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem});
-            this.triangle1ToolStripMenuItem.Name = "triangle1ToolStripMenuItem";
-            this.triangle1ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.triangle1ToolStripMenuItem.Text = "Triangle1";
-            // 
-            // triangle2ToolStripMenuItem
-            // 
-            this.triangle2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem1});
-            this.triangle2ToolStripMenuItem.Name = "triangle2ToolStripMenuItem";
-            this.triangle2ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.triangle2ToolStripMenuItem.Text = "Triangle2";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.flatToolStripMenuItem,
-            this.textureToolStripMenuItem});
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            // 
-            // colorToolStripMenuItem1
-            // 
-            this.colorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.flatToolStripMenuItem1,
-            this.textureToolStripMenuItem1});
-            this.colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
-            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.colorToolStripMenuItem1.Text = "Color";
-            // 
-            // flatToolStripMenuItem
-            // 
-            this.flatToolStripMenuItem.Name = "flatToolStripMenuItem";
-            this.flatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.flatToolStripMenuItem.Text = "Flat";
-            this.flatToolStripMenuItem.Click += new System.EventHandler(this.flatToolStripMenuItem_Click);
-            // 
-            // textureToolStripMenuItem
-            // 
-            this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
-            this.textureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.textureToolStripMenuItem.Text = "Texture";
-            this.textureToolStripMenuItem.Click += new System.EventHandler(this.textureToolStripMenuItem_Click);
-            // 
-            // flatToolStripMenuItem1
-            // 
-            this.flatToolStripMenuItem1.Name = "flatToolStripMenuItem1";
-            this.flatToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.flatToolStripMenuItem1.Text = "Flat";
-            this.flatToolStripMenuItem1.Click += new System.EventHandler(this.flatToolStripMenuItem1_Click);
-            // 
-            // textureToolStripMenuItem1
-            // 
-            this.textureToolStripMenuItem1.Name = "textureToolStripMenuItem1";
-            this.textureToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
-            this.textureToolStripMenuItem1.Text = "Texture";
-            this.textureToolStripMenuItem1.Click += new System.EventHandler(this.textureToolStripMenuItem1_Click);
-            // 
             // colorToolStripMenuItem2
             // 
             this.colorToolStripMenuItem2.Name = "colorToolStripMenuItem2";
-            this.colorToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.colorToolStripMenuItem2.Size = new System.Drawing.Size(117, 22);
             this.colorToolStripMenuItem2.Text = "Color";
             this.colorToolStripMenuItem2.Click += new System.EventHandler(this.colorToolStripMenuItem2_Click);
             // 
@@ -157,27 +95,89 @@
             this.constantLight,
             this.variableLight});
             this.positionToolStripMenuItem.Name = "positionToolStripMenuItem";
-            this.positionToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.positionToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
             this.positionToolStripMenuItem.Text = "Position";
             // 
             // constantLight
             // 
             this.constantLight.Name = "constantLight";
-            this.constantLight.Size = new System.Drawing.Size(180, 22);
+            this.constantLight.Size = new System.Drawing.Size(122, 22);
             this.constantLight.Text = "Constant";
             this.constantLight.Click += new System.EventHandler(this.constantToolStripMenuItem_Click);
             // 
             // variableLight
             // 
             this.variableLight.Name = "variableLight";
-            this.variableLight.Size = new System.Drawing.Size(180, 22);
+            this.variableLight.Size = new System.Drawing.Size(122, 22);
             this.variableLight.Text = "Variable";
             this.variableLight.Click += new System.EventHandler(this.variableToolStripMenuItem_Click);
+            // 
+            // triangle1ToolStripMenuItem
+            // 
+            this.triangle1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorToolStripMenuItem});
+            this.triangle1ToolStripMenuItem.Name = "triangle1ToolStripMenuItem";
+            this.triangle1ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.triangle1ToolStripMenuItem.Text = "Triangle1";
+            // 
+            // colorToolStripMenuItem
+            // 
+            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.flatToolStripMenuItem,
+            this.textureToolStripMenuItem});
+            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem.Text = "Color";
+            // 
+            // flatToolStripMenuItem
+            // 
+            this.flatToolStripMenuItem.Name = "flatToolStripMenuItem";
+            this.flatToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.flatToolStripMenuItem.Text = "Flat";
+            this.flatToolStripMenuItem.Click += new System.EventHandler(this.flatToolStripMenuItem_Click);
+            // 
+            // textureToolStripMenuItem
+            // 
+            this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
+            this.textureToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.textureToolStripMenuItem.Text = "Texture";
+            this.textureToolStripMenuItem.Click += new System.EventHandler(this.textureToolStripMenuItem_Click);
+            // 
+            // triangle2ToolStripMenuItem
+            // 
+            this.triangle2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.colorToolStripMenuItem1});
+            this.triangle2ToolStripMenuItem.Name = "triangle2ToolStripMenuItem";
+            this.triangle2ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.triangle2ToolStripMenuItem.Text = "Triangle2";
+            // 
+            // colorToolStripMenuItem1
+            // 
+            this.colorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.flatToolStripMenuItem1,
+            this.textureToolStripMenuItem1});
+            this.colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
+            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem1.Text = "Color";
+            // 
+            // flatToolStripMenuItem1
+            // 
+            this.flatToolStripMenuItem1.Name = "flatToolStripMenuItem1";
+            this.flatToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.flatToolStripMenuItem1.Text = "Flat";
+            this.flatToolStripMenuItem1.Click += new System.EventHandler(this.flatToolStripMenuItem1_Click);
+            // 
+            // textureToolStripMenuItem1
+            // 
+            this.textureToolStripMenuItem1.Name = "textureToolStripMenuItem1";
+            this.textureToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.textureToolStripMenuItem1.Text = "Texture";
+            this.textureToolStripMenuItem1.Click += new System.EventHandler(this.textureToolStripMenuItem1_Click);
             // 
             // timer
             // 
             this.timer.Enabled = true;
-            this.timer.Interval = 40;
+            this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
             // 
             // Form1

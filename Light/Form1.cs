@@ -17,7 +17,7 @@ namespace Light
         /// Parameter defining animated light source position.
         /// Incremented after every frame with animated light source.
         /// </summary>
-        double t = 7;
+        double t = 0;
         /// <summary>
         /// Which vertex is moving (-1 if none)
         /// </summary>
@@ -40,7 +40,7 @@ namespace Light
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
-        Point[] points = { new Point(10, 10), new Point(20, 200), new Point(200, 20), new Point(300, 300), new Point(50, 250), new Point(250, 50) };
+        Point[] points = { new Point(10, 10), new Point(20, 300), new Point(300, 20), new Point(400, 300), new Point(50, 350), new Point(260, 10) };
 
         public Form1()
         {
@@ -81,7 +81,7 @@ namespace Light
 
         private bool OffScreen(Point p)
         {
-            return p.X < 8 || p.Y < 8 || p.X > Screen.PrimaryScreen.WorkingArea.Width - 8 || p.Y > Screen.PrimaryScreen.WorkingArea.Height - 50;
+            return p.X < 8 || p.Y < 8 || p.X > 800 || p.Y > 600;
         }
 
         private void Fill()
@@ -94,8 +94,8 @@ namespace Light
             }
             else
             {
-                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 6);
-                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 6);
+                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 5);
+                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 5);
                 lightPos[2] = 60 + Math.Sin(2*t) * 50;
                 t += 0.01;
             }
@@ -126,10 +126,7 @@ namespace Light
                     });
                 }
                 y++;
-                Parallel.ForEach(AET, e =>
-                {
-                    e.x += e.d;
-                });
+                foreach (Edge e in AET) e.x += e.d;
             }
 
             k = 0;
@@ -149,19 +146,27 @@ namespace Light
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
                 {
-                    Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
-                    {
-                        double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
-                        double[] normalV = { 0, 0, 1 };
-                        lightV[0] = lightPos[0] - j;
-                        bmp.SetPixel(j, y, Multiply(colors[1], lightColor, Cos(normalV, lightV)));
-                    });
+                    //Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
+                    //{
+                    //    double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
+                    //    double[] normalV = { 0, 0, 1 };
+                    //    lightV[0] = lightPos[0] - j;
+                    //    bmp.SetPixel(j, y, Multiply(colors[1], lightColor, Cos(normalV, lightV)));
+                    //});
+                    serialFor(i);
                 }
                 y++;
-                Parallel.ForEach(AET, e =>
+                foreach (Edge e in AET) e.x += e.d;
+            }
+            void serialFor(int ii)
+            {
+                for (int j = (int)AET[ii].x; j < (int)AET[ii + 1].x; j++)
                 {
-                    e.x += e.d;
-                });
+                    double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
+                    double[] normalV = { 0, 0, 1 };
+                    lightV[0] = lightPos[0] - j;
+                    bmp.SetPixel(j, y, Multiply(colors[1], lightColor, Cos(normalV, lightV)));
+                }
             }
 
             void Add(Point p1, Point p2)
@@ -188,16 +193,11 @@ namespace Light
 
             double Cos(double[] v1, double[] v2)
             {
-                double d = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
-                v1[0] /= d;
-                v1[1] /= d;
-                v1[2] /= d;
-                d = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
-                v2[0] /= d;
-                v2[1] /= d;
-                v2[2] /= d;
-                return v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2];
+                double d1 = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
+                double d2 = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
+                return (v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2]) / d1 / d2;
             }
+
         }
 
         private void pictureBox_MouseDown(object sender, MouseEventArgs e)
