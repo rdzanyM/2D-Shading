@@ -13,7 +13,8 @@ namespace Light
     public partial class Form1 : Form
     {
         Graphics g;
-        Bitmap bmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+        //Bitmap bmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+        DirectBitmap bmp = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         Point[] points = { new Point(100, 100), new Point(100, 200), new Point(200, 100), new Point(200, 200), new Point(200, 300), new Point(300, 200) };
         Pen pen = new Pen(Brushes.Black, 1);
         int moving = -1;
@@ -37,8 +38,8 @@ namespace Light
         public Form1()
         {
             InitializeComponent();
-            pictureBox.Image = bmp;
-            g = Graphics.FromImage(bmp);
+            pictureBox.Image = bmp.Bitmap;
+            g = Graphics.FromImage(bmp.Bitmap);
             g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
@@ -106,12 +107,8 @@ namespace Light
             Add(points[0], points[1]);
             Add(points[1], points[2]);
             Add(points[2], points[0]);
-            Add(points[3], points[4]);
-            Add(points[4], points[5]);
-            Add(points[5], points[3]);
-
             int y = 0;
-            while (k < 6 || AET.Count > 0)
+            while (k < 3 || AET.Count > 0)
             {
                 AET.RemoveAll((e) => e.y == y);
                 while (ET[y] != null)
@@ -123,16 +120,42 @@ namespace Light
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
                 {
-                    for (int j = (int)AET[i].x; j <= AET[i + 1].x; j++)
+                    Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
                     {
                         bmp.SetPixel(j, y, Color.Black);
-                    }
+                    });
                 }
                 y++;
                 foreach (Edge e in AET)
                     e.x += e.d;
             }
 
+            k = 0;
+            Add(points[3], points[4]);
+            Add(points[4], points[5]);
+            Add(points[5], points[3]);
+            y = 0;
+            while (k < 3 || AET.Count > 0)
+            {
+                AET.RemoveAll((e) => e.y == y);
+                while (ET[y] != null)
+                {
+                    AET.Add(ET[y]);
+                    ET[y] = ET[y].next;
+                    k++;
+                }
+                AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
+                for (int i = 0; i < AET.Count - 1; i += 2)
+                {
+                    Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
+                    {
+                        bmp.SetPixel(j, y, Color.Black);
+                    });
+                }
+                y++;
+                foreach (Edge e in AET)
+                    e.x += e.d;
+            }
 
             void Add(Point p1, Point p2)
             {
