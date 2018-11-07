@@ -13,10 +13,9 @@ namespace Light
     public partial class Form1 : Form
     {
         Graphics g;
-        //Bitmap bmp = new Bitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         DirectBitmap bmp = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         Point[] points = { new Point(100, 100), new Point(100, 200), new Point(200, 100), new Point(200, 200), new Point(200, 300), new Point(300, 200) };
-        Pen pen = new Pen(Brushes.Black, 1);
+        Pen pen = new Pen(Brushes.Black, 2);
         int moving = -1;
         List<Edge> AET = new List<Edge>();
 
@@ -126,8 +125,10 @@ namespace Light
                     });
                 }
                 y++;
-                foreach (Edge e in AET)
+                Parallel.ForEach(AET, e =>
+                {
                     e.x += e.d;
+                });
             }
 
             k = 0;
@@ -153,8 +154,10 @@ namespace Light
                     });
                 }
                 y++;
-                foreach (Edge e in AET)
+                Parallel.ForEach(AET, e =>
+                {
                     e.x += e.d;
+                });
             }
 
             void Add(Point p1, Point p2)
