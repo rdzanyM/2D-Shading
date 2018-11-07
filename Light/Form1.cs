@@ -21,7 +21,7 @@ namespace Light
         Color[] colors = new Color[2];
         Color lightColor = Color.White;
         double[] lightPos = new double[3];
-        double t = -5;
+        double t = 7;
 
         class Edge
         {
@@ -47,7 +47,7 @@ namespace Light
             g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
             colors[0] = Color.Aqua;
-            colors[1] = Color.LightCoral;
+            colors[1] = Color.Crimson;
             constantLight.Checked = true;
             Redraw();
         }
@@ -132,9 +132,9 @@ namespace Light
             }
             else
             {
-                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/5.55) / 6);
-                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/4.44) / 6);
-                lightPos[2] = 60 + Math.Sin(t) * 50;
+                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 6);
+                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 6);
+                lightPos[2] = 60 + Math.Sin(2*t) * 50;
                 t += 0.01;
             }
             Edge[] ET = new Edge[Screen.PrimaryScreen.WorkingArea.Height];
