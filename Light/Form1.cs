@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -86,7 +87,8 @@ namespace Light
 
         private void Fill()
         {
-            if(constantLight.Checked)
+            List<Task> tasks = new List<Task>();
+            if (constantLight.Checked)
             {
                 lightPos[0] = 100;
                 lightPos[1] = 100;
@@ -116,19 +118,12 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                {
-                    Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
-                    {
-                        double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
-                        double[] normalV = { 0, 0, 1 };
-                        lightV[0] = lightPos[0] - j;
-                        bmp.SetPixel(j, y, Multiply(colors[0], lightColor, Cos(normalV, lightV)));
-                    });
-                }
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, colors[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
-
+            Task.WaitAll(tasks.ToArray());
+            tasks.Clear();
             k = 0;
             Add(points[3], points[4]);
             Add(points[4], points[5]);
@@ -145,27 +140,27 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                {
-                    //Parallel.For((int)AET[i].x, (int)AET[i + 1].x, j =>
-                    //{
-                    //    double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
-                    //    double[] normalV = { 0, 0, 1 };
-                    //    lightV[0] = lightPos[0] - j;
-                    //    bmp.SetPixel(j, y, Multiply(colors[1], lightColor, Cos(normalV, lightV)));
-                    //});
-                    serialFor(i);
-                }
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, colors[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
-            void serialFor(int ii)
+            Task.WaitAll(tasks.ToArray());
+
+            void FillLine(int i, int max, int yy, Color c)
             {
-                for (int j = (int)AET[ii].x; j < (int)AET[ii + 1].x; j++)
+                Task t = new Task(() => TaskFor(i, max, yy, c));
+                tasks.Add(t);
+                t.Start();
+            }
+            
+            void TaskFor(int s, int max, int yy, Color c)
+            {
+                double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
+                for (int i = s; i < max; i++)
                 {
-                    double[] lightV = { 0, lightPos[1] - y, lightPos[2] };
                     double[] normalV = { 0, 0, 1 };
-                    lightV[0] = lightPos[0] - j;
-                    bmp.SetPixel(j, y, Multiply(colors[1], lightColor, Cos(normalV, lightV)));
+                    lightV[0] = lightPos[0] - i;
+                    bmp.SetPixel(i, yy, Multiply(c, lightColor, Cos(normalV, lightV)));
                 }
             }
 
