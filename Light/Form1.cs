@@ -24,6 +24,10 @@ namespace Light
         /// </summary>
         int moving = -1;
         /// <summary>
+        /// Has nothing changed since last call to <see cref="Redraw"/>
+        /// </summary>
+        bool drawn = false;
+        /// <summary>
         /// Colors of two triangles
         /// </summary>
         DirectBitmap[] textures = new DirectBitmap[2];
@@ -59,7 +63,7 @@ namespace Light
             textures[1] = new DirectBitmap(1, 1);
             textures[1].SetPixel(0, 0, Color.Crimson);
             constantLight.Checked = true;
-            Redraw();
+            timer.Enabled = true;
         }
         
         /// <summary>
@@ -227,7 +231,11 @@ namespace Light
 
         private void pictureBox_MouseMove(object sender, MouseEventArgs e)
         {
-            if (moving >= 0 && !OffScreen(e.Location))  points[moving] = e.Location;
+            if (moving >= 0 && !OffScreen(e.Location))
+            {
+                points[moving] = e.Location;
+                drawn = false;
+            }
         }
 
 
@@ -237,24 +245,30 @@ namespace Light
         {
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK) lightColor = cd.Color;
-            Redraw();
+            drawn = false;
         }
 
         private void constantToolStripMenuItem_Click(object sender, EventArgs e)
         {
             constantLight.Checked = true;
             variableLight.Checked = false;
+            drawn = false;
         }
 
         private void variableToolStripMenuItem_Click(object sender, EventArgs e)
         {
             variableLight.Checked = true;
             constantLight.Checked = false;
+            drawn = false;
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
-            Redraw();
+            if (variableLight.Checked || !drawn)
+            {
+                drawn = true;
+                Redraw();
+            }
         }
 
         /// <summary>
@@ -285,7 +299,7 @@ namespace Light
                 textures[0] = new DirectBitmap(1, 1);
                 textures[0].SetPixel(0, 0, cd.Color);
             }
-            Redraw();
+            drawn = false;
         }
 
         private void addImageToolStripMenuItem_Click(object sender, EventArgs e)
@@ -302,12 +316,14 @@ namespace Light
                     Graphics.FromImage(textures[0].Bitmap).DrawImage(b, new Point(0, 0));
                 }
             }
+            drawn = false;
         }
 
         private void steelToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textures[0] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
             Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            drawn = false;
         }
 
         //Triangle2
@@ -319,7 +335,7 @@ namespace Light
                 textures[1] = new DirectBitmap(1, 1);
                 textures[1].SetPixel(0, 0, cd.Color);
             }
-            Redraw();
+            drawn = false;
         }
 
         private void addImageToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -336,12 +352,14 @@ namespace Light
                     Graphics.FromImage(textures[1].Bitmap).DrawImage(b, new Point(0, 0));
                 }
             }
+            drawn = false;
         }
 
         private void steelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             textures[1] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
             Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            drawn = false;
         }
     }
 }
