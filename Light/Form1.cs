@@ -13,7 +13,7 @@ namespace Light
 {
     public partial class Form1 : Form
     {
-        Graphics g;
+        Graphics gfx;
         /// <summary>
         /// Parameter defining animated light source position.
         /// Incremented after every frame with animated light source.
@@ -26,7 +26,7 @@ namespace Light
         /// <summary>
         /// Colors of two triangles
         /// </summary>
-        Color[] colors = new Color[2];
+        DirectBitmap[] textures = new DirectBitmap[2];
         Color lightColor = Color.White;
         /// <summary>
         /// Position of light source (x,y,z) where z > 0
@@ -37,7 +37,10 @@ namespace Light
         /// </summary>
         List<Edge> AET = new List<Edge>();
         Pen pen = new Pen(Brushes.Black, 2);
-        DirectBitmap bmp = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
+        /// <summary>
+        /// Main bitmap displayed on screen
+        /// </summary>
+        DirectBitmap bitmap = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
@@ -46,13 +49,15 @@ namespace Light
         public Form1()
         {
             InitializeComponent();
-            pictureBox.Image = bmp.Bitmap;
-            g = Graphics.FromImage(bmp.Bitmap);
-            g.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
-            g.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
-            g.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-            colors[0] = Color.Aqua;
-            colors[1] = Color.Crimson;
+            pictureBox.Image = bitmap.Bitmap;
+            gfx = Graphics.FromImage(bitmap.Bitmap);
+            gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
+            gfx.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
+            gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
+            textures[0] = new DirectBitmap(1, 1);
+            textures[0].SetPixel(0, 0, Color.Aqua);
+            textures[1] = new DirectBitmap(1, 1);
+            textures[1].SetPixel(0, 0, Color.Crimson);
             constantLight.Checked = true;
             Redraw();
         }
@@ -63,7 +68,7 @@ namespace Light
         /// </summary>
         private void Redraw()
         {
-            g.Clear(Color.White);
+            gfx.Clear(Color.White);
             Fill();
             DrawTriangle(points[0], points[1], points[2]);
             DrawTriangle(points[3], points[4], points[5]);
@@ -71,12 +76,12 @@ namespace Light
 
             void DrawTriangle(Point p1, Point p2, Point p3)
             {
-                g.DrawLine(pen, p1, p2);
-                g.DrawLine(pen, p2, p3);
-                g.DrawLine(pen, p3, p1);
-                g.DrawEllipse(pen, p1.X - 2, p1.Y - 2, 4, 4);
-                g.DrawEllipse(pen, p2.X - 2, p2.Y - 2, 4, 4);
-                g.DrawEllipse(pen, p3.X - 2, p3.Y - 2, 4, 4);
+                gfx.DrawLine(pen, p1, p2);
+                gfx.DrawLine(pen, p2, p3);
+                gfx.DrawLine(pen, p3, p1);
+                gfx.DrawEllipse(pen, p1.X - 2, p1.Y - 2, 4, 4);
+                gfx.DrawEllipse(pen, p2.X - 2, p2.Y - 2, 4, 4);
+                gfx.DrawEllipse(pen, p3.X - 2, p3.Y - 2, 4, 4);
             }
         }
 
@@ -118,7 +123,7 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, colors[0]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
@@ -140,27 +145,27 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, colors[1]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, Color c)
+            void FillLine(int i, int max, int yy, DirectBitmap d)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, c));
+                Task t = new Task(() => TaskFor(i, max, yy, d));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, Color c)
+            void TaskFor(int s, int max, int yy, DirectBitmap d)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
                 {
                     double[] normalV = { 0, 0, 1 };
                     lightV[0] = lightPos[0] - i;
-                    bmp.SetPixel(i, yy, Multiply(c, lightColor, Cos(normalV, lightV)));
+                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(normalV, lightV)));
                 }
             }
 
@@ -225,31 +230,7 @@ namespace Light
             if (moving >= 0 && !OffScreen(e.Location))  points[moving] = e.Location;
         }
 
-        //Triangle1
-        private void flatToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK) colors[0] = cd.Color;
-            Redraw();
-        }
 
-        private void textureToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        //Triangle2
-        private void flatToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK) colors[1] = cd.Color;
-            Redraw();
-        }
-
-        private void textureToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         //Light
         private void colorToolStripMenuItem2_Click(object sender, EventArgs e)
@@ -292,6 +273,63 @@ namespace Light
             public double x;
             public double d;
             public Edge next;
+        }
+
+
+        //Triangle1
+        private void flatToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                textures[0] = new DirectBitmap(1, 1);
+                textures[0].SetPixel(0, 0, cd.Color);
+            }
+            Redraw();
+        }
+
+        private void addImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Bitmap b = new Bitmap(dlg.FileName);
+                    textures[0] = new DirectBitmap(b.Width, b.Height);
+                    Graphics.FromImage(textures[0].Bitmap).DrawImage(b, new Point(0, 0));
+                }
+            }
+        }
+
+        //Triangle2
+        private void flatToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                textures[1] = new DirectBitmap(1, 1);
+                textures[1].SetPixel(0, 0, cd.Color);
+            }
+            Redraw();
+        }
+
+        private void addImageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    Bitmap b = new Bitmap(dlg.FileName);
+                    textures[1] = new DirectBitmap(b.Width, b.Height);
+                    Graphics.FromImage(textures[1].Bitmap).DrawImage(b, new Point(0, 0));
+                }
+            }
         }
     }
 }

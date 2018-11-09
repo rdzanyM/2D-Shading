@@ -45,6 +45,8 @@
             this.flatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.textureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
+            this.addImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -126,22 +128,23 @@
             this.flatToolStripMenuItem,
             this.textureToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.colorToolStripMenuItem.Text = "Color";
             // 
             // flatToolStripMenuItem
             // 
             this.flatToolStripMenuItem.Name = "flatToolStripMenuItem";
-            this.flatToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.flatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.flatToolStripMenuItem.Text = "Flat";
             this.flatToolStripMenuItem.Click += new System.EventHandler(this.flatToolStripMenuItem_Click);
             // 
             // textureToolStripMenuItem
             // 
+            this.textureToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addImageToolStripMenuItem});
             this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
-            this.textureToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.textureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textureToolStripMenuItem.Text = "Texture";
-            this.textureToolStripMenuItem.Click += new System.EventHandler(this.textureToolStripMenuItem_Click);
             // 
             // triangle2ToolStripMenuItem
             // 
@@ -157,7 +160,7 @@
             this.flatToolStripMenuItem1,
             this.textureToolStripMenuItem1});
             this.colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
-            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.colorToolStripMenuItem1.Text = "Color";
             // 
             // flatToolStripMenuItem1
@@ -169,16 +172,31 @@
             // 
             // textureToolStripMenuItem1
             // 
+            this.textureToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.addImageToolStripMenuItem1});
             this.textureToolStripMenuItem1.Name = "textureToolStripMenuItem1";
-            this.textureToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
+            this.textureToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.textureToolStripMenuItem1.Text = "Texture";
-            this.textureToolStripMenuItem1.Click += new System.EventHandler(this.textureToolStripMenuItem1_Click);
             // 
             // timer
             // 
             this.timer.Enabled = true;
             this.timer.Interval = 20;
             this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            // 
+            // addImageToolStripMenuItem
+            // 
+            this.addImageToolStripMenuItem.Name = "addImageToolStripMenuItem";
+            this.addImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.addImageToolStripMenuItem.Text = "Add Image";
+            this.addImageToolStripMenuItem.Click += new System.EventHandler(this.addImageToolStripMenuItem_Click);
+            // 
+            // addImageToolStripMenuItem1
+            // 
+            this.addImageToolStripMenuItem1.Name = "addImageToolStripMenuItem1";
+            this.addImageToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.addImageToolStripMenuItem1.Text = "Add Image";
+            this.addImageToolStripMenuItem1.Click += new System.EventHandler(this.addImageToolStripMenuItem1_Click);
             // 
             // Form1
             // 
@@ -216,6 +234,8 @@
         private System.Windows.Forms.ToolStripMenuItem constantLight;
         private System.Windows.Forms.ToolStripMenuItem variableLight;
         private System.Windows.Forms.Timer timer;
+        private System.Windows.Forms.ToolStripMenuItem addImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addImageToolStripMenuItem1;
     }
 }
 

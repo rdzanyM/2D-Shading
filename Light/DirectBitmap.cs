@@ -28,16 +28,18 @@ namespace Light
             Bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppPArgb, BitsHandle.AddrOfPinnedObject());
         }
 
-        public void SetPixel(int x, int y, Color colour)
+        public void SetPixel(int x, int y, Color color)
         {
             int index = x + (y * Width);
-            int col = colour.ToArgb();
+            int col = color.ToArgb();
             Bits[index] = col;
         }
-
+        /// <summary>
+        /// Gets a color of a pixel(x % width, y % height).
+        /// </summary>
         public Color GetPixel(int x, int y)
         {
-            int index = x + (y * Width);
+            int index = x % Width + (y % Height * Width);
             int col = Bits[index];
             Color result = Color.FromArgb(col);
             return result;
