@@ -304,6 +304,12 @@ namespace Light
             }
         }
 
+        private void steelToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            textures[0] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
+            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+        }
+
         //Triangle2
         private void flatToolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -330,6 +336,12 @@ namespace Light
                     Graphics.FromImage(textures[1].Bitmap).DrawImage(b, new Point(0, 0));
                 }
             }
+        }
+
+        private void steelToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            textures[1] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
+            Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
         }
     }
 }
