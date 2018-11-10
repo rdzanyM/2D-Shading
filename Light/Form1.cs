@@ -46,9 +46,17 @@ namespace Light
         /// </summary>
         DirectBitmap bitmap = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         /// <summary>
-        /// Maps of normal vectors
+        /// Maps of normal vectors from image
         /// </summary>
-        VectorMap[] vectorMaps = new VectorMap[2];
+        NormalMap[] normalMaps = new NormalMap[2];
+        /// <summary>
+        /// Maps of height vectors from image
+        /// </summary>
+        HeightMap[] heightMaps = new HeightMap[2];
+        /// <summary>
+        /// Maps of normal vectors including height disturbance
+        /// </summary>
+        NormalMap[] vectorMaps = new NormalMap[2];
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
@@ -67,8 +75,12 @@ namespace Light
             textures[1] = new DirectBitmap(1, 1);
             textures[1].SetPixel(0, 0, Color.Crimson);
             constantLight.Checked = true;
-            vectorMaps[0] = new VectorMap();
-            vectorMaps[1] = new VectorMap();
+            normalMaps[0] = new NormalMap();
+            normalMaps[1] = new NormalMap();
+            heightMaps[0] = new HeightMap();
+            heightMaps[1] = new HeightMap();
+            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
             timer.Enabled = true;
         }
         
@@ -160,20 +172,20 @@ namespace Light
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, DirectBitmap d, VectorMap v)
+            void FillLine(int i, int max, int yy, DirectBitmap d, NormalMap n)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, d, v));
+                Task t = new Task(() => TaskFor(i, max, yy, d, n));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, DirectBitmap d, VectorMap v)
+            void TaskFor(int s, int max, int yy, DirectBitmap d, NormalMap n)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
                 {
                     lightV[0] = lightPos[0] - i;
-                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(v.GetVector(i, yy), lightV)));
+                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(n.GetVector(i, yy), lightV)));
                 }
             }
 
@@ -294,8 +306,7 @@ namespace Light
         }
 
 
-        //Triangle1
-        private void flatToolStripMenuItem_Click(object sender, EventArgs e)
+        private void T1_Texture_Flat_Click(object sender, EventArgs e)
         {
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
@@ -306,7 +317,18 @@ namespace Light
             drawn = false;
         }
 
-        private void addImageToolStripMenuItem_Click(object sender, EventArgs e)
+        private void T2_Texture_Flat_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                textures[1] = new DirectBitmap(1, 1);
+                textures[1].SetPixel(0, 0, cd.Color);
+            }
+            drawn = false;
+        }
+
+        private void T1_Texture_FromImage_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -322,46 +344,7 @@ namespace Light
             drawn = false;
         }
 
-        private void steelToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            textures[0] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
-            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
-            drawn = false;
-        }
-
-        private void fromImageToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            using (OpenFileDialog dlg = new OpenFileDialog())
-            {
-                dlg.Title = "Open Image";
-                dlg.Filter = "bmp files (*.bmp)|*.bmp";
-                if (dlg.ShowDialog() == DialogResult.OK)
-                {
-                    vectorMaps[0] = new VectorMap(new Bitmap(dlg.FileName));
-                }
-            }
-            drawn = false;
-        }
-
-        private void metalToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            vectorMaps[0] = new VectorMap(Properties.Resources.Normal_Metal);
-            drawn = false;
-        }
-
-        //Triangle2
-        private void flatToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK)
-            {
-                textures[1] = new DirectBitmap(1, 1);
-                textures[1].SetPixel(0, 0, cd.Color);
-            }
-            drawn = false;
-        }
-
-        private void addImageToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void T2_Texture_FromImage_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -377,14 +360,21 @@ namespace Light
             drawn = false;
         }
 
-        private void steelToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void T1_Texture_Steel_Click(object sender, EventArgs e)
+        {
+            textures[0] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
+            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
+            drawn = false;
+        }
+
+        private void T2_Texture_Steel_Click(object sender, EventArgs e)
         {
             textures[1] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
             Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
             drawn = false;
         }
 
-        private void fromImageToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void T1_NormalMap_FromImage_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -392,15 +382,69 @@ namespace Light
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    vectorMaps[1] = new VectorMap(new Bitmap(dlg.FileName));
+                    normalMaps[0] = new NormalMap(new Bitmap(dlg.FileName));
+                    vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
                 }
             }
             drawn = false;
         }
 
-        private void metalToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void T2_NormalMap_FromImage_Click(object sender, EventArgs e)
         {
-            vectorMaps[1] = new VectorMap(Properties.Resources.Normal_Metal);
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    normalMaps[1] = new NormalMap(new Bitmap(dlg.FileName));
+                    vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                }
+            }
+            drawn = false;
+        }
+
+        private void T1_NormalMap_Metal_Click(object sender, EventArgs e)
+        {
+            normalMaps[0] = new NormalMap(Properties.Resources.Normal_Metal);
+            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+            drawn = false;
+        }
+
+        private void T2_NormalMap_Metal_Click(object sender, EventArgs e)
+        {
+            normalMaps[1] = new NormalMap(Properties.Resources.Normal_Metal);
+            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+            drawn = false;
+        }
+
+        private void T1_HeightMap_FromImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    heightMaps[0] = new HeightMap(new Bitmap(dlg.FileName));
+                    vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+                }
+            }
+            drawn = false;
+        }
+
+        private void T2_HeightMap_FromImage_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    heightMaps[1] = new HeightMap(new Bitmap(dlg.FileName));
+                    vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                }
+            }
             drawn = false;
         }
     }
