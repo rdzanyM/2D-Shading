@@ -84,5 +84,8 @@
   <ItemGroup>
     <None Include="Resources\steel.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\normalMetal.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

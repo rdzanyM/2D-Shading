@@ -63,9 +63,19 @@ namespace Light.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap steel {
+        internal static System.Drawing.Bitmap Normal_Metal {
             get {
-                object obj = ResourceManager.GetObject("steel", resourceCulture);
+                object obj = ResourceManager.GetObject("Normal_Metal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Texture_Steel {
+            get {
+                object obj = ResourceManager.GetObject("Texture_Steel", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

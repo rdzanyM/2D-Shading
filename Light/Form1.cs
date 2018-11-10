@@ -324,8 +324,8 @@ namespace Light
 
         private void steelToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textures[0] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
-            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            textures[0] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
+            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
             drawn = false;
         }
 
@@ -340,6 +340,12 @@ namespace Light
                     vectorMaps[0] = new VectorMap(new Bitmap(dlg.FileName));
                 }
             }
+            drawn = false;
+        }
+
+        private void metalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            vectorMaps[0] = new VectorMap(Properties.Resources.Normal_Metal);
             drawn = false;
         }
 
@@ -373,8 +379,8 @@ namespace Light
 
         private void steelToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            textures[1] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
-            Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            textures[1] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
+            Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
             drawn = false;
         }
 
@@ -389,6 +395,12 @@ namespace Light
                     vectorMaps[1] = new VectorMap(new Bitmap(dlg.FileName));
                 }
             }
+            drawn = false;
+        }
+
+        private void metalToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            vectorMaps[1] = new VectorMap(Properties.Resources.Normal_Metal);
             drawn = false;
         }
     }
