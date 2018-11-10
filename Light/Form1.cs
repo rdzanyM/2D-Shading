@@ -46,6 +46,10 @@ namespace Light
         /// </summary>
         DirectBitmap bitmap = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         /// <summary>
+        /// Maps of normal vectors
+        /// </summary>
+        VectorMap[] vectorMaps = new VectorMap[2];
+        /// <summary>
         /// Vertices of two triangles
         /// </summary>
         Point[] points = { new Point(10, 10), new Point(20, 300), new Point(300, 20), new Point(400, 300), new Point(50, 350), new Point(260, 10) };
@@ -63,12 +67,13 @@ namespace Light
             textures[1] = new DirectBitmap(1, 1);
             textures[1].SetPixel(0, 0, Color.Crimson);
             constantLight.Checked = true;
+            vectorMaps[0] = new VectorMap();
+            vectorMaps[1] = new VectorMap();
             timer.Enabled = true;
         }
         
         /// <summary>
         /// Draws a new Frame.
-        /// Triggered every 40ms.
         /// </summary>
         private void Redraw()
         {
@@ -127,7 +132,7 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0], vectorMaps[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
@@ -149,27 +154,26 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1], vectorMaps[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, DirectBitmap d)
+            void FillLine(int i, int max, int yy, DirectBitmap d, VectorMap v)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, d));
+                Task t = new Task(() => TaskFor(i, max, yy, d, v));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, DirectBitmap d)
+            void TaskFor(int s, int max, int yy, DirectBitmap d, VectorMap v)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
                 {
-                    double[] normalV = { 0, 0, 1 };
                     lightV[0] = lightPos[0] - i;
-                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(normalV, lightV)));
+                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(v.GetVector(i, yy), lightV)));
                 }
             }
 
@@ -199,7 +203,7 @@ namespace Light
             {
                 double d1 = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
                 double d2 = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
-                return (v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2]) / d1 / d2;
+                return Math.Max((v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2]) / d1 / d2, 0);
             }
 
         }
@@ -308,7 +312,6 @@ namespace Light
             {
                 dlg.Title = "Open Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
-
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
@@ -323,6 +326,20 @@ namespace Light
         {
             textures[0] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
             Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            drawn = false;
+        }
+
+        private void fromImageToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    vectorMaps[0] = new VectorMap(new Bitmap(dlg.FileName));
+                }
+            }
             drawn = false;
         }
 
@@ -344,7 +361,6 @@ namespace Light
             {
                 dlg.Title = "Open Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
-
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
@@ -359,6 +375,20 @@ namespace Light
         {
             textures[1] = new DirectBitmap(Properties.Resources.steel.Width, Properties.Resources.steel.Height);
             Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.steel, new Point(0, 0));
+            drawn = false;
+        }
+
+        private void fromImageToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            using (OpenFileDialog dlg = new OpenFileDialog())
+            {
+                dlg.Title = "Open Image";
+                dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                if (dlg.ShowDialog() == DialogResult.OK)
+                {
+                    vectorMaps[1] = new VectorMap(new Bitmap(dlg.FileName));
+                }
+            }
             drawn = false;
         }
     }

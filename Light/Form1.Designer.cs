@@ -49,6 +49,12 @@
             this.steelToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.normalMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.metalFloorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.normalMapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fromImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.metalFloorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -107,7 +113,8 @@
             // triangle1ToolStripMenuItem
             // 
             this.triangle1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem});
+            this.colorToolStripMenuItem,
+            this.normalMapToolStripMenuItem});
             this.triangle1ToolStripMenuItem.Name = "triangle1ToolStripMenuItem";
             this.triangle1ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.triangle1ToolStripMenuItem.Text = "Triangle1";
@@ -118,13 +125,13 @@
             this.flatToolStripMenuItem,
             this.textureToolStripMenuItem});
             this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.colorToolStripMenuItem.Text = "Color";
             // 
             // flatToolStripMenuItem
             // 
             this.flatToolStripMenuItem.Name = "flatToolStripMenuItem";
-            this.flatToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.flatToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.flatToolStripMenuItem.Text = "Flat";
             this.flatToolStripMenuItem.Click += new System.EventHandler(this.flatToolStripMenuItem_Click);
             // 
@@ -134,27 +141,28 @@
             this.addImageToolStripMenuItem,
             this.steelToolStripMenuItem});
             this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
-            this.textureToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
+            this.textureToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.textureToolStripMenuItem.Text = "Texture";
             // 
             // addImageToolStripMenuItem
             // 
             this.addImageToolStripMenuItem.Name = "addImageToolStripMenuItem";
-            this.addImageToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.addImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.addImageToolStripMenuItem.Text = "Add Image";
             this.addImageToolStripMenuItem.Click += new System.EventHandler(this.addImageToolStripMenuItem_Click);
             // 
             // steelToolStripMenuItem
             // 
             this.steelToolStripMenuItem.Name = "steelToolStripMenuItem";
-            this.steelToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.steelToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.steelToolStripMenuItem.Text = "Steel";
             this.steelToolStripMenuItem.Click += new System.EventHandler(this.steelToolStripMenuItem_Click);
             // 
             // triangle2ToolStripMenuItem
             // 
             this.triangle2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem1});
+            this.colorToolStripMenuItem1,
+            this.normalMapToolStripMenuItem1});
             this.triangle2ToolStripMenuItem.Name = "triangle2ToolStripMenuItem";
             this.triangle2ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.triangle2ToolStripMenuItem.Text = "Triangle2";
@@ -165,7 +173,7 @@
             this.flatToolStripMenuItem1,
             this.textureToolStripMenuItem1});
             this.colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
-            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(103, 22);
+            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.colorToolStripMenuItem1.Text = "Color";
             // 
             // flatToolStripMenuItem1
@@ -215,6 +223,50 @@
             this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
             this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
             // 
+            // normalMapToolStripMenuItem
+            // 
+            this.normalMapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fromImageToolStripMenuItem,
+            this.metalFloorToolStripMenuItem});
+            this.normalMapToolStripMenuItem.Name = "normalMapToolStripMenuItem";
+            this.normalMapToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.normalMapToolStripMenuItem.Text = "Normal Map";
+            // 
+            // metalFloorToolStripMenuItem
+            // 
+            this.metalFloorToolStripMenuItem.Name = "metalFloorToolStripMenuItem";
+            this.metalFloorToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.metalFloorToolStripMenuItem.Text = "Metal";
+            // 
+            // fromImageToolStripMenuItem
+            // 
+            this.fromImageToolStripMenuItem.Name = "fromImageToolStripMenuItem";
+            this.fromImageToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.fromImageToolStripMenuItem.Text = "From Image";
+            this.fromImageToolStripMenuItem.Click += new System.EventHandler(this.fromImageToolStripMenuItem_Click);
+            // 
+            // normalMapToolStripMenuItem1
+            // 
+            this.normalMapToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fromImageToolStripMenuItem1,
+            this.metalFloorToolStripMenuItem1});
+            this.normalMapToolStripMenuItem1.Name = "normalMapToolStripMenuItem1";
+            this.normalMapToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.normalMapToolStripMenuItem1.Text = "Normal Map";
+            // 
+            // fromImageToolStripMenuItem1
+            // 
+            this.fromImageToolStripMenuItem1.Name = "fromImageToolStripMenuItem1";
+            this.fromImageToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.fromImageToolStripMenuItem1.Text = "From Image";
+            this.fromImageToolStripMenuItem1.Click += new System.EventHandler(this.fromImageToolStripMenuItem1_Click);
+            // 
+            // metalFloorToolStripMenuItem1
+            // 
+            this.metalFloorToolStripMenuItem1.Name = "metalFloorToolStripMenuItem1";
+            this.metalFloorToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.metalFloorToolStripMenuItem1.Text = "Metal";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -255,6 +307,12 @@
         private System.Windows.Forms.ToolStripMenuItem addImageToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem steelToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem steelToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem normalMapToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem metalFloorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem normalMapToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem metalFloorToolStripMenuItem1;
     }
 }
 
