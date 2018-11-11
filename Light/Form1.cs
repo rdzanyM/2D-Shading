@@ -20,6 +20,16 @@ namespace Light
         /// </summary>
         double t = 0;
         /// <summary>
+        /// The power in phong reflection model is equal to 2 ^ <see cref="phongFactor"/>.
+        /// The greater the power the narrower the reflection.
+        /// </summary>
+        int phongFactor = 6;
+        /// <summary>
+        /// How much of the light is reflected.
+        /// 1 - <see cref="phongWeight"/> is diffused.
+        /// </summary>
+        double phongWeight = 0.7;
+        /// <summary>
         /// Which vertex is moving (-1 if none)
         /// </summary>
         int moving = -1;
@@ -185,7 +195,13 @@ namespace Light
                 for (int i = s; i < max; i++)
                 {
                     lightV[0] = lightPos[0] - i;
-                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, Cos(n.GetVector(i, yy), lightV)));
+                    double[] normalV = n.GetVector(i, yy);
+                    double diffuseReflection = Cos(normalV, lightV);
+                    double[] v = { 2 * normalV[0] - lightV[0], 2 * normalV[1] - lightV[1], 2 * normalV[2] - lightV[2]};
+                    double specularReflection = v[2] / Math.Sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
+                    for (int p = 0; p < phongFactor; p++)
+                        specularReflection *= specularReflection;
+                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, specularReflection * phongWeight + diffuseReflection * (1 - phongWeight)));
                 }
             }
 

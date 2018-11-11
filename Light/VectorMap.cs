@@ -24,9 +24,10 @@ namespace Light
                 for (int j = 0; j < height; j++)
                 {
                     map[i, j] = new double[3];
-                    double d = normalMap.GetPixel(i, j).B - 128;
-                    map[i, j][0] = (normalMap.GetPixel(i, j).R - 128)/d;
-                    map[i, j][1] = (normalMap.GetPixel(i, j).G - 128)/d;
+                    double d = normalMap.GetPixel(i, j).B - 127;
+                    if (d == 0) d += 1e-8;
+                    map[i, j][0] = (normalMap.GetPixel(i, j).R - 127)/d;
+                    map[i, j][1] = (normalMap.GetPixel(i, j).G - 127)/d;
                     map[i, j][2] = 1;
                 }
             }
