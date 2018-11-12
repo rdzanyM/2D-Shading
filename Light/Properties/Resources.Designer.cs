@@ -63,9 +63,9 @@ namespace Light.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Normal_Metal {
+        internal static System.Drawing.Bitmap Crystal_Normal {
             get {
-                object obj = ResourceManager.GetObject("Normal_Metal", resourceCulture);
+                object obj = ResourceManager.GetObject("Crystal_Normal", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -73,9 +73,29 @@ namespace Light.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Texture_Steel {
+        internal static System.Drawing.Bitmap Crystal_Texture {
             get {
-                object obj = ResourceManager.GetObject("Texture_Steel", resourceCulture);
+                object obj = ResourceManager.GetObject("Crystal_Texture", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TreadPlate_Normal {
+            get {
+                object obj = ResourceManager.GetObject("TreadPlate_Normal", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap TreadPlate_Texture {
+            get {
+                object obj = ResourceManager.GetObject("TreadPlate_Texture", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

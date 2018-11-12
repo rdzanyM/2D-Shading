@@ -23,7 +23,7 @@ namespace Light
         /// The power in phong reflection model is equal to 2 ^ <see cref="phongFactor"/>.
         /// The greater the power the narrower the reflection.
         /// </summary>
-        int phongFactor = 6;
+        int phongFactor = 7;
         /// <summary>
         /// How much of the light is reflected.
         /// 1 - <see cref="phongWeight"/> is diffused.
@@ -128,13 +128,13 @@ namespace Light
             {
                 lightPos[0] = 100;
                 lightPos[1] = 100;
-                lightPos[2] = 100;
+                lightPos[2] = 300;
             }
             else
             {
-                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 5);
-                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 5);
-                lightPos[2] = 60 + Math.Sin(2*t) * 50;
+                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 4);
+                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 4);
+                lightPos[2] = 80 + Math.Sin(2*t) * 40;
                 t += 0.01;
             }
             Edge[] ET = new Edge[Screen.PrimaryScreen.WorkingArea.Height];
@@ -344,7 +344,7 @@ namespace Light
             drawn = false;
         }
 
-        private void T1_Texture_FromImage_Click(object sender, EventArgs e)
+        private void T1_Texture_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -354,13 +354,15 @@ namespace Light
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
                     textures[0] = new DirectBitmap(b.Width, b.Height);
-                    Graphics.FromImage(textures[0].Bitmap).DrawImage(b, new Point(0, 0));
+                    for (int i = 0; i < b.Width; i++)
+                        for (int j = 0; j < b.Height; j++)
+                            textures[0].SetPixel(i,j,b.GetPixel(i,j));
                 }
             }
             drawn = false;
         }
 
-        private void T2_Texture_FromImage_Click(object sender, EventArgs e)
+        private void T2_Texture_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
             {
@@ -370,23 +372,11 @@ namespace Light
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
                     textures[1] = new DirectBitmap(b.Width, b.Height);
-                    Graphics.FromImage(textures[1].Bitmap).DrawImage(b, new Point(0, 0));
+                    for (int i = 0; i < b.Width; i++)
+                        for (int j = 0; j < b.Height; j++)
+                            textures[1].SetPixel(i, j, b.GetPixel(i, j));
                 }
             }
-            drawn = false;
-        }
-
-        private void T1_Texture_Steel_Click(object sender, EventArgs e)
-        {
-            textures[0] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
-            Graphics.FromImage(textures[0].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
-            drawn = false;
-        }
-
-        private void T2_Texture_Steel_Click(object sender, EventArgs e)
-        {
-            textures[1] = new DirectBitmap(Properties.Resources.Texture_Steel.Width, Properties.Resources.Texture_Steel.Height);
-            Graphics.FromImage(textures[1].Bitmap).DrawImage(Properties.Resources.Texture_Steel, new Point(0, 0));
             drawn = false;
         }
 
@@ -420,20 +410,6 @@ namespace Light
             drawn = false;
         }
 
-        private void T1_NormalMap_Metal_Click(object sender, EventArgs e)
-        {
-            normalMaps[0] = new NormalMap(Properties.Resources.Normal_Metal);
-            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
-            drawn = false;
-        }
-
-        private void T2_NormalMap_Metal_Click(object sender, EventArgs e)
-        {
-            normalMaps[1] = new NormalMap(Properties.Resources.Normal_Metal);
-            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
-            drawn = false;
-        }
-
         private void T1_HeightMap_FromImage_Click(object sender, EventArgs e)
         {
             using (OpenFileDialog dlg = new OpenFileDialog())
@@ -461,6 +437,58 @@ namespace Light
                     vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
                 }
             }
+            drawn = false;
+        }
+
+        private void T1_Crystal_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.Crystal_Texture;
+            textures[0] = new DirectBitmap(b.Width, b.Height);
+            for (int i = 0; i < b.Width; i++)
+                for (int j = 0; j < b.Height; j++)
+                    textures[0].SetPixel(i, j, b.GetPixel(i, j));
+            normalMaps[0] = new NormalMap(Properties.Resources.Crystal_Normal);
+            heightMaps[0] = new HeightMap(Properties.Resources.Crystal_Texture);
+            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+            drawn = false;
+        }
+
+        private void T1_TreadPlate_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.TreadPlate_Texture;
+            textures[0] = new DirectBitmap(b.Width, b.Height);
+            for (int i = 0; i < b.Width; i++)
+                for (int j = 0; j < b.Height; j++)
+                    textures[0].SetPixel(i, j, b.GetPixel(i, j));
+            normalMaps[0] = new NormalMap(Properties.Resources.TreadPlate_Normal);
+            heightMaps[0] = new HeightMap(Properties.Resources.TreadPlate_Texture);
+            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+            drawn = false;
+        }
+
+        private void T2_Crystal_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.Crystal_Texture;
+            textures[1] = new DirectBitmap(b.Width, b.Height);
+            for (int i = 0; i < b.Width; i++)
+                for (int j = 0; j < b.Height; j++)
+                    textures[1].SetPixel(i, j, b.GetPixel(i, j));
+            normalMaps[1] = new NormalMap(Properties.Resources.Crystal_Normal);
+            heightMaps[1] = new HeightMap(Properties.Resources.Crystal_Texture);
+            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+            drawn = false;
+        }
+
+        private void T2_TreadPlate_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.TreadPlate_Texture;
+            textures[1] = new DirectBitmap(b.Width, b.Height);
+            for (int i = 0; i < b.Width; i++)
+                for (int j = 0; j < b.Height; j++)
+                    textures[1].SetPixel(i, j, b.GetPixel(i, j));
+            normalMaps[1] = new NormalMap(Properties.Resources.TreadPlate_Normal);
+            heightMaps[1] = new HeightMap(Properties.Resources.TreadPlate_Texture);
+            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
             drawn = false;
         }
     }
