@@ -91,6 +91,7 @@ namespace Light
             heightMaps[1] = new HeightMap();
             vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
             vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+            T1_Crystal_Click(null, null);
             timer.Enabled = true;
         }
         
@@ -134,7 +135,7 @@ namespace Light
             {
                 lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 4);
                 lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 4);
-                lightPos[2] = 80 + Math.Sin(2*t) * 40;
+                lightPos[2] = 80 + Math.Sin(2*t) * 20;
                 t += 0.01;
             }
             Edge[] ET = new Edge[Screen.PrimaryScreen.WorkingArea.Height];
@@ -195,12 +196,17 @@ namespace Light
                 for (int i = s; i < max; i++)
                 {
                     lightV[0] = lightPos[0] - i;
+                    double length = Math.Sqrt(lightV[0] * lightV[0] + lightV[1] * lightV[1] + lightV[2] * lightV[2]);
+                    double[] lightV1 = { lightV[0] / length, lightV[1] / length, lightV[2] / length };
                     double[] normalV = n.GetVector(i, yy);
-                    double diffuseReflection = Cos(normalV, lightV);
-                    double[] v = { 2 * normalV[0] - lightV[0], 2 * normalV[1] - lightV[1], 2 * normalV[2] - lightV[2]};
-                    double specularReflection = v[2] / Math.Sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2]);
-                    for (int p = 0; p < phongFactor; p++)
-                        specularReflection *= specularReflection;
+                    double diffuseReflection = Cos(normalV, lightV1);
+                    double ln = lightV1[0] * normalV[0] + lightV1[1] * normalV[1] + lightV1[2] * normalV[2];
+                    double specularReflection = 2 * normalV[2] * ln - lightV1[2];
+                    if(specularReflection < 0)
+                        specularReflection = 0;
+                    else
+                        for (int p = 0; p < phongFactor; p++)
+                            specularReflection *= specularReflection;
                     bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, specularReflection * phongWeight + diffuseReflection * (1 - phongWeight)));
                 }
             }
@@ -227,11 +233,9 @@ namespace Light
                 return Color.FromArgb((int)(d * c1.R * c2.R / 255), (int)(d * c1.G * c2.G / 255), (int)(d * c1.B * c2.B / 255));
             }
 
-            double Cos(double[] v1, double[] v2)
+            double Cos(double[] v1, double[] v2) //v1, v2 are vectors of length 1
             {
-                double d1 = Math.Sqrt(v1[0] * v1[0] + v1[1] * v1[1] + v1[2] * v1[2]);
-                double d2 = Math.Sqrt(v2[0] * v2[0] + v2[1] * v2[1] + v2[2] * v2[2]);
-                return Math.Max((v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2]) / d1 / d2, 0);
+                return Math.Max((v1[0] * v2[0] + v1[1] * v2[1] + v1[2] * v2[2]), 0);
             }
 
         }

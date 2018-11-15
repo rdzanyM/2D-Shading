@@ -63,6 +63,10 @@ namespace Light
                     disturbed.map[x, y][0] = vector[0] + dx;
                     disturbed.map[x, y][1] = vector[1] + dy;
                     disturbed.map[x, y][2] = vector[2] - vector[0] * dx - vector[1] * dy;
+                    double d = Math.Sqrt(disturbed.map[x, y][0] * disturbed.map[x, y][0] + disturbed.map[x, y][1] * disturbed.map[x, y][1] + disturbed.map[x, y][2] * disturbed.map[x, y][2]);
+                    disturbed.map[x, y][0] /= d;
+                    disturbed.map[x, y][1] /= d;
+                    disturbed.map[x, y][2] /= d;
                 }
             }
             return disturbed;
