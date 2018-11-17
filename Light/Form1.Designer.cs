@@ -31,24 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.triangle1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.flatToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.textureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromImageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.heightMapToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromImageToolStripMenuItem2 = new System.Windows.Forms.ToolStripMenuItem();
             this.exampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.crystalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treadPlateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.triangle2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.colorToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.flatToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.textureToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.normalMapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromImageToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.heightMapToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.fromImageToolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.exampleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.crystalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.treadPlateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -59,19 +45,24 @@
             this.tableLayoutPanel12 = new System.Windows.Forms.TableLayoutPanel();
             this.label11 = new System.Windows.Forms.Label();
             this.tableLayoutPanel13 = new System.Windows.Forms.TableLayoutPanel();
-            this.button_T2_PhongWeight = new System.Windows.Forms.Button();
-            this.button_T2_PhongFactor = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.textBox_T2_Weight = new System.Windows.Forms.TextBox();
             this.label_T2_PhongFactor = new System.Windows.Forms.Label();
             this.label_T2_PhongWeight = new System.Windows.Forms.Label();
+            this.textBox_T2_Factor = new System.Windows.Forms.TextBox();
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Height = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Normal = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Color = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
@@ -87,6 +78,7 @@
             this.radioButton_Animated = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.button_Light_Color = new System.Windows.Forms.Button();
+            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -95,32 +87,30 @@
             this.tableLayoutPanel9 = new System.Windows.Forms.TableLayoutPanel();
             this.label8 = new System.Windows.Forms.Label();
             this.tableLayoutPanel10 = new System.Windows.Forms.TableLayoutPanel();
-            this.button_T1_PhongWeight = new System.Windows.Forms.Button();
-            this.button_T1_PhongFactor = new System.Windows.Forms.Button();
+            this.label12 = new System.Windows.Forms.Label();
+            this.textBox_T1_Weight = new System.Windows.Forms.TextBox();
             this.label_T1_PhongFactor = new System.Windows.Forms.Label();
             this.label_T1_PhongWeight = new System.Windows.Forms.Label();
+            this.textBox_T1_Factor = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Height = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Normal = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Color = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -132,24 +122,24 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).BeginInit();
+            this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -168,66 +158,10 @@
             // triangle1ToolStripMenuItem
             // 
             this.triangle1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem,
-            this.normalMapToolStripMenuItem,
-            this.heightMapToolStripMenuItem,
             this.exampleToolStripMenuItem});
             this.triangle1ToolStripMenuItem.Name = "triangle1ToolStripMenuItem";
             this.triangle1ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.triangle1ToolStripMenuItem.Text = "Triangle1";
-            // 
-            // colorToolStripMenuItem
-            // 
-            this.colorToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.flatToolStripMenuItem,
-            this.textureToolStripMenuItem});
-            this.colorToolStripMenuItem.Name = "colorToolStripMenuItem";
-            this.colorToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.colorToolStripMenuItem.Text = "Color";
-            // 
-            // flatToolStripMenuItem
-            // 
-            this.flatToolStripMenuItem.Name = "flatToolStripMenuItem";
-            this.flatToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.flatToolStripMenuItem.Text = "Flat";
-            this.flatToolStripMenuItem.Click += new System.EventHandler(this.T1_Texture_Flat_Click);
-            // 
-            // textureToolStripMenuItem
-            // 
-            this.textureToolStripMenuItem.Name = "textureToolStripMenuItem";
-            this.textureToolStripMenuItem.Size = new System.Drawing.Size(113, 22);
-            this.textureToolStripMenuItem.Text = "Texture";
-            this.textureToolStripMenuItem.Click += new System.EventHandler(this.T1_Texture_Click);
-            // 
-            // normalMapToolStripMenuItem
-            // 
-            this.normalMapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fromImageToolStripMenuItem});
-            this.normalMapToolStripMenuItem.Name = "normalMapToolStripMenuItem";
-            this.normalMapToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.normalMapToolStripMenuItem.Text = "Normal Map";
-            // 
-            // fromImageToolStripMenuItem
-            // 
-            this.fromImageToolStripMenuItem.Name = "fromImageToolStripMenuItem";
-            this.fromImageToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
-            this.fromImageToolStripMenuItem.Text = "From Image";
-            this.fromImageToolStripMenuItem.Click += new System.EventHandler(this.T1_NormalMap_FromImage_Click);
-            // 
-            // heightMapToolStripMenuItem
-            // 
-            this.heightMapToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fromImageToolStripMenuItem2});
-            this.heightMapToolStripMenuItem.Name = "heightMapToolStripMenuItem";
-            this.heightMapToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
-            this.heightMapToolStripMenuItem.Text = "Height Map";
-            // 
-            // fromImageToolStripMenuItem2
-            // 
-            this.fromImageToolStripMenuItem2.Name = "fromImageToolStripMenuItem2";
-            this.fromImageToolStripMenuItem2.Size = new System.Drawing.Size(138, 22);
-            this.fromImageToolStripMenuItem2.Text = "From Image";
-            this.fromImageToolStripMenuItem2.Click += new System.EventHandler(this.T1_HeightMap_FromImage_Click);
             // 
             // exampleToolStripMenuItem
             // 
@@ -235,7 +169,7 @@
             this.crystalToolStripMenuItem,
             this.treadPlateToolStripMenuItem});
             this.exampleToolStripMenuItem.Name = "exampleToolStripMenuItem";
-            this.exampleToolStripMenuItem.Size = new System.Drawing.Size(141, 22);
+            this.exampleToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
             this.exampleToolStripMenuItem.Text = "Example";
             // 
             // crystalToolStripMenuItem
@@ -255,66 +189,10 @@
             // triangle2ToolStripMenuItem
             // 
             this.triangle2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.colorToolStripMenuItem1,
-            this.normalMapToolStripMenuItem1,
-            this.heightMapToolStripMenuItem1,
             this.exampleToolStripMenuItem1});
             this.triangle2ToolStripMenuItem.Name = "triangle2ToolStripMenuItem";
             this.triangle2ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
             this.triangle2ToolStripMenuItem.Text = "Triangle2";
-            // 
-            // colorToolStripMenuItem1
-            // 
-            this.colorToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.flatToolStripMenuItem1,
-            this.textureToolStripMenuItem1});
-            this.colorToolStripMenuItem1.Name = "colorToolStripMenuItem1";
-            this.colorToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
-            this.colorToolStripMenuItem1.Text = "Color";
-            // 
-            // flatToolStripMenuItem1
-            // 
-            this.flatToolStripMenuItem1.Name = "flatToolStripMenuItem1";
-            this.flatToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
-            this.flatToolStripMenuItem1.Text = "Flat";
-            this.flatToolStripMenuItem1.Click += new System.EventHandler(this.T2_Texture_Flat_Click);
-            // 
-            // textureToolStripMenuItem1
-            // 
-            this.textureToolStripMenuItem1.Name = "textureToolStripMenuItem1";
-            this.textureToolStripMenuItem1.Size = new System.Drawing.Size(113, 22);
-            this.textureToolStripMenuItem1.Text = "Texture";
-            this.textureToolStripMenuItem1.Click += new System.EventHandler(this.T2_Texture_Click);
-            // 
-            // normalMapToolStripMenuItem1
-            // 
-            this.normalMapToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fromImageToolStripMenuItem1});
-            this.normalMapToolStripMenuItem1.Name = "normalMapToolStripMenuItem1";
-            this.normalMapToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
-            this.normalMapToolStripMenuItem1.Text = "Normal Map";
-            // 
-            // fromImageToolStripMenuItem1
-            // 
-            this.fromImageToolStripMenuItem1.Name = "fromImageToolStripMenuItem1";
-            this.fromImageToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
-            this.fromImageToolStripMenuItem1.Text = "From Image";
-            this.fromImageToolStripMenuItem1.Click += new System.EventHandler(this.T2_NormalMap_FromImage_Click);
-            // 
-            // heightMapToolStripMenuItem1
-            // 
-            this.heightMapToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.fromImageToolStripMenuItem3});
-            this.heightMapToolStripMenuItem1.Name = "heightMapToolStripMenuItem1";
-            this.heightMapToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
-            this.heightMapToolStripMenuItem1.Text = "Height Map";
-            // 
-            // fromImageToolStripMenuItem3
-            // 
-            this.fromImageToolStripMenuItem3.Name = "fromImageToolStripMenuItem3";
-            this.fromImageToolStripMenuItem3.Size = new System.Drawing.Size(138, 22);
-            this.fromImageToolStripMenuItem3.Text = "From Image";
-            this.fromImageToolStripMenuItem3.Click += new System.EventHandler(this.T2_HeightMap_FromImage_Click);
             // 
             // exampleToolStripMenuItem1
             // 
@@ -322,7 +200,7 @@
             this.crystalToolStripMenuItem1,
             this.treadPlateToolStripMenuItem1});
             this.exampleToolStripMenuItem1.Name = "exampleToolStripMenuItem1";
-            this.exampleToolStripMenuItem1.Size = new System.Drawing.Size(141, 22);
+            this.exampleToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
             this.exampleToolStripMenuItem1.Text = "Example";
             // 
             // crystalToolStripMenuItem1
@@ -428,9 +306,8 @@
             // tableLayoutPanel12
             // 
             this.tableLayoutPanel12.ColumnCount = 2;
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel12.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel12.Controls.Add(this.label11, 0, 0);
             this.tableLayoutPanel12.Controls.Add(this.tableLayoutPanel13, 1, 0);
             this.tableLayoutPanel12.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -456,59 +333,56 @@
             // 
             // tableLayoutPanel13
             // 
-            this.tableLayoutPanel13.ColumnCount = 2;
-            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.ColumnCount = 3;
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel13.Controls.Add(this.button_T2_PhongWeight, 1, 1);
-            this.tableLayoutPanel13.Controls.Add(this.button_T2_PhongFactor, 1, 0);
+            this.tableLayoutPanel13.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel13.Controls.Add(this.label13, 2, 0);
+            this.tableLayoutPanel13.Controls.Add(this.label10, 2, 1);
+            this.tableLayoutPanel13.Controls.Add(this.textBox_T2_Weight, 1, 1);
             this.tableLayoutPanel13.Controls.Add(this.label_T2_PhongFactor, 0, 0);
             this.tableLayoutPanel13.Controls.Add(this.label_T2_PhongWeight, 0, 1);
+            this.tableLayoutPanel13.Controls.Add(this.textBox_T2_Factor, 1, 0);
             this.tableLayoutPanel13.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel13.Location = new System.Drawing.Point(115, 0);
+            this.tableLayoutPanel13.Location = new System.Drawing.Point(100, 0);
             this.tableLayoutPanel13.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel13.Name = "tableLayoutPanel13";
             this.tableLayoutPanel13.RowCount = 2;
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel13.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel13.Size = new System.Drawing.Size(207, 53);
+            this.tableLayoutPanel13.Size = new System.Drawing.Size(222, 53);
             this.tableLayoutPanel13.TabIndex = 1;
             // 
-            // button_T2_PhongWeight
+            // label13
             // 
-            this.button_T2_PhongWeight.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_T2_PhongWeight.AutoSize = true;
-            this.button_T2_PhongWeight.BackColor = System.Drawing.Color.White;
-            this.button_T2_PhongWeight.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.button_T2_PhongWeight.FlatAppearance.BorderSize = 2;
-            this.button_T2_PhongWeight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.button_T2_PhongWeight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button_T2_PhongWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_T2_PhongWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_T2_PhongWeight.Location = new System.Drawing.Point(119, 27);
-            this.button_T2_PhongWeight.Margin = new System.Windows.Forms.Padding(1);
-            this.button_T2_PhongWeight.Name = "button_T2_PhongWeight";
-            this.button_T2_PhongWeight.Size = new System.Drawing.Size(75, 25);
-            this.button_T2_PhongWeight.TabIndex = 4;
-            this.button_T2_PhongWeight.Text = "Change";
-            this.button_T2_PhongWeight.UseVisualStyleBackColor = false;
+            this.label13.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(173, 6);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(46, 13);
+            this.label13.TabIndex = 6;
+            this.label13.Text = "[ 0 - 12 ]";
             // 
-            // button_T2_PhongFactor
+            // label10
             // 
-            this.button_T2_PhongFactor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_T2_PhongFactor.BackColor = System.Drawing.Color.White;
-            this.button_T2_PhongFactor.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.button_T2_PhongFactor.FlatAppearance.BorderSize = 2;
-            this.button_T2_PhongFactor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.button_T2_PhongFactor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button_T2_PhongFactor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_T2_PhongFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_T2_PhongFactor.Location = new System.Drawing.Point(119, 1);
-            this.button_T2_PhongFactor.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.button_T2_PhongFactor.Name = "button_T2_PhongFactor";
-            this.button_T2_PhongFactor.Size = new System.Drawing.Size(75, 25);
-            this.button_T2_PhongFactor.TabIndex = 3;
-            this.button_T2_PhongFactor.Text = "Change";
-            this.button_T2_PhongFactor.UseVisualStyleBackColor = false;
+            this.label10.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(173, 33);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(46, 13);
+            this.label10.TabIndex = 5;
+            this.label10.Text = "[0.0-1.0]";
+            // 
+            // textBox_T2_Weight
+            // 
+            this.textBox_T2_Weight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_T2_Weight.Location = new System.Drawing.Point(73, 29);
+            this.textBox_T2_Weight.Name = "textBox_T2_Weight";
+            this.textBox_T2_Weight.Size = new System.Drawing.Size(94, 20);
+            this.textBox_T2_Weight.TabIndex = 3;
+            this.textBox_T2_Weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_T2_Weight.TextChanged += new System.EventHandler(this.textBox_T2_Weight_TextChanged);
+            this.textBox_T2_Weight.Leave += new System.EventHandler(this.TextBox_T2_Weight_Leave);
             // 
             // label_T2_PhongFactor
             // 
@@ -531,6 +405,17 @@
             this.label_T2_PhongWeight.Size = new System.Drawing.Size(47, 13);
             this.label_T2_PhongWeight.TabIndex = 1;
             this.label_T2_PhongWeight.Text = "Weight: ";
+            // 
+            // textBox_T2_Factor
+            // 
+            this.textBox_T2_Factor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_T2_Factor.Location = new System.Drawing.Point(73, 3);
+            this.textBox_T2_Factor.Name = "textBox_T2_Factor";
+            this.textBox_T2_Factor.Size = new System.Drawing.Size(94, 20);
+            this.textBox_T2_Factor.TabIndex = 2;
+            this.textBox_T2_Factor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_T2_Factor.TextChanged += new System.EventHandler(this.TextBox_T2_Factor_TextChanged);
+            this.textBox_T2_Factor.Leave += new System.EventHandler(this.TextBox_T2_Factor_Leave);
             // 
             // panel4
             // 
@@ -575,6 +460,19 @@
             this.button_T2_Height.TabIndex = 2;
             this.button_T2_Height.Text = "Change";
             this.button_T2_Height.UseVisualStyleBackColor = false;
+            this.button_T2_Height.Click += new System.EventHandler(this.Button_T2_Height_Click);
+            // 
+            // pictureBox_T2_Height
+            // 
+            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
+            this.pictureBox_T2_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Height.TabIndex = 1;
+            this.pictureBox_T2_Height.TabStop = false;
             // 
             // label14
             // 
@@ -621,6 +519,19 @@
             this.button_T2_Normal.TabIndex = 2;
             this.button_T2_Normal.Text = "Change";
             this.button_T2_Normal.UseVisualStyleBackColor = false;
+            this.button_T2_Normal.Click += new System.EventHandler(this.button_T2_Normal_Click);
+            // 
+            // pictureBox_T2_Normal
+            // 
+            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
+            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Normal.TabIndex = 1;
+            this.pictureBox_T2_Normal.TabStop = false;
             // 
             // label15
             // 
@@ -668,6 +579,18 @@
             this.button_T2_Color.Text = "Change";
             this.button_T2_Color.UseVisualStyleBackColor = false;
             this.button_T2_Color.Click += new System.EventHandler(this.Button_T2_Color_Click);
+            // 
+            // pictureBox_T2_Color
+            // 
+            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
+            this.pictureBox_T2_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Color.TabIndex = 1;
+            this.pictureBox_T2_Color.TabStop = false;
             // 
             // label16
             // 
@@ -802,10 +725,10 @@
             this.radioButton_Constant.Location = new System.Drawing.Point(10, 5);
             this.radioButton_Constant.Margin = new System.Windows.Forms.Padding(10, 3, 3, 3);
             this.radioButton_Constant.Name = "radioButton_Constant";
-            this.radioButton_Constant.Size = new System.Drawing.Size(136, 17);
+            this.radioButton_Constant.Size = new System.Drawing.Size(142, 17);
             this.radioButton_Constant.TabIndex = 0;
             this.radioButton_Constant.TabStop = true;
-            this.radioButton_Constant.Text = "Constant [111,111,222]";
+            this.radioButton_Constant.Text = "Constant [111, 111, 222]";
             this.radioButton_Constant.UseVisualStyleBackColor = true;
             this.radioButton_Constant.Click += new System.EventHandler(this.RadioButton_Constant_Click);
             // 
@@ -856,6 +779,18 @@
             this.button_Light_Color.Text = "Change";
             this.button_Light_Color.UseVisualStyleBackColor = false;
             this.button_Light_Color.Click += new System.EventHandler(this.Button_Light_Color_Click);
+            // 
+            // pictureBox_Light_Color
+            // 
+            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
+            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
+            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
+            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
+            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_Light_Color.TabIndex = 1;
+            this.pictureBox_Light_Color.TabStop = false;
             // 
             // label1
             // 
@@ -936,9 +871,8 @@
             // tableLayoutPanel9
             // 
             this.tableLayoutPanel9.ColumnCount = 2;
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 115F));
+            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
             this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel9.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel9.Controls.Add(this.label8, 0, 0);
             this.tableLayoutPanel9.Controls.Add(this.tableLayoutPanel10, 1, 0);
             this.tableLayoutPanel9.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -964,59 +898,46 @@
             // 
             // tableLayoutPanel10
             // 
-            this.tableLayoutPanel10.ColumnCount = 2;
-            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.ColumnCount = 3;
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel10.Controls.Add(this.button_T1_PhongWeight, 1, 1);
-            this.tableLayoutPanel10.Controls.Add(this.button_T1_PhongFactor, 1, 0);
+            this.tableLayoutPanel10.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel10.Controls.Add(this.label12, 2, 1);
+            this.tableLayoutPanel10.Controls.Add(this.textBox_T1_Weight, 1, 1);
             this.tableLayoutPanel10.Controls.Add(this.label_T1_PhongFactor, 0, 0);
             this.tableLayoutPanel10.Controls.Add(this.label_T1_PhongWeight, 0, 1);
+            this.tableLayoutPanel10.Controls.Add(this.textBox_T1_Factor, 1, 0);
+            this.tableLayoutPanel10.Controls.Add(this.label9, 2, 0);
             this.tableLayoutPanel10.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel10.Location = new System.Drawing.Point(115, 0);
+            this.tableLayoutPanel10.Location = new System.Drawing.Point(100, 0);
             this.tableLayoutPanel10.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel10.Name = "tableLayoutPanel10";
             this.tableLayoutPanel10.RowCount = 2;
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel10.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel10.Size = new System.Drawing.Size(207, 53);
+            this.tableLayoutPanel10.Size = new System.Drawing.Size(222, 53);
             this.tableLayoutPanel10.TabIndex = 1;
             // 
-            // button_T1_PhongWeight
+            // label12
             // 
-            this.button_T1_PhongWeight.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_T1_PhongWeight.AutoSize = true;
-            this.button_T1_PhongWeight.BackColor = System.Drawing.Color.White;
-            this.button_T1_PhongWeight.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.button_T1_PhongWeight.FlatAppearance.BorderSize = 2;
-            this.button_T1_PhongWeight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.button_T1_PhongWeight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button_T1_PhongWeight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_T1_PhongWeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_T1_PhongWeight.Location = new System.Drawing.Point(119, 27);
-            this.button_T1_PhongWeight.Margin = new System.Windows.Forms.Padding(1);
-            this.button_T1_PhongWeight.Name = "button_T1_PhongWeight";
-            this.button_T1_PhongWeight.Size = new System.Drawing.Size(75, 25);
-            this.button_T1_PhongWeight.TabIndex = 4;
-            this.button_T1_PhongWeight.Text = "Change";
-            this.button_T1_PhongWeight.UseVisualStyleBackColor = false;
+            this.label12.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(173, 33);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(46, 13);
+            this.label12.TabIndex = 6;
+            this.label12.Text = "[0.0-1.0]";
             // 
-            // button_T1_PhongFactor
+            // textBox_T1_Weight
             // 
-            this.button_T1_PhongFactor.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button_T1_PhongFactor.BackColor = System.Drawing.Color.White;
-            this.button_T1_PhongFactor.FlatAppearance.BorderColor = System.Drawing.Color.LightSkyBlue;
-            this.button_T1_PhongFactor.FlatAppearance.BorderSize = 2;
-            this.button_T1_PhongFactor.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
-            this.button_T1_PhongFactor.FlatAppearance.MouseOverBackColor = System.Drawing.Color.WhiteSmoke;
-            this.button_T1_PhongFactor.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button_T1_PhongFactor.Font = new System.Drawing.Font("Microsoft Sans Serif", 6.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.button_T1_PhongFactor.Location = new System.Drawing.Point(119, 1);
-            this.button_T1_PhongFactor.Margin = new System.Windows.Forms.Padding(1, 1, 1, 0);
-            this.button_T1_PhongFactor.Name = "button_T1_PhongFactor";
-            this.button_T1_PhongFactor.Size = new System.Drawing.Size(75, 25);
-            this.button_T1_PhongFactor.TabIndex = 3;
-            this.button_T1_PhongFactor.Text = "Change";
-            this.button_T1_PhongFactor.UseVisualStyleBackColor = false;
+            this.textBox_T1_Weight.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_T1_Weight.Location = new System.Drawing.Point(73, 29);
+            this.textBox_T1_Weight.Name = "textBox_T1_Weight";
+            this.textBox_T1_Weight.Size = new System.Drawing.Size(94, 20);
+            this.textBox_T1_Weight.TabIndex = 3;
+            this.textBox_T1_Weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_T1_Weight.TextChanged += new System.EventHandler(this.TextBox_T1_Weight_TextChanged);
+            this.textBox_T1_Weight.Leave += new System.EventHandler(this.TextBox_T1_Weight_Leave);
             // 
             // label_T1_PhongFactor
             // 
@@ -1039,6 +960,27 @@
             this.label_T1_PhongWeight.Size = new System.Drawing.Size(47, 13);
             this.label_T1_PhongWeight.TabIndex = 1;
             this.label_T1_PhongWeight.Text = "Weight: ";
+            // 
+            // textBox_T1_Factor
+            // 
+            this.textBox_T1_Factor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.textBox_T1_Factor.Location = new System.Drawing.Point(73, 3);
+            this.textBox_T1_Factor.Name = "textBox_T1_Factor";
+            this.textBox_T1_Factor.Size = new System.Drawing.Size(94, 20);
+            this.textBox_T1_Factor.TabIndex = 2;
+            this.textBox_T1_Factor.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBox_T1_Factor.TextChanged += new System.EventHandler(this.TextBox_T1_Factor_TextChanged);
+            this.textBox_T1_Factor.Leave += new System.EventHandler(this.TextBox_T1_Factor_Leave);
+            // 
+            // label9
+            // 
+            this.label9.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(173, 6);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(46, 13);
+            this.label9.TabIndex = 4;
+            this.label9.Text = "[ 0 - 12 ]";
             // 
             // panel9
             // 
@@ -1083,6 +1025,19 @@
             this.button_T1_Height.TabIndex = 2;
             this.button_T1_Height.Text = "Change";
             this.button_T1_Height.UseVisualStyleBackColor = false;
+            this.button_T1_Height.Click += new System.EventHandler(this.Button_T1_Height_Click);
+            // 
+            // pictureBox_T1_Height
+            // 
+            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
+            this.pictureBox_T1_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Height.TabIndex = 1;
+            this.pictureBox_T1_Height.TabStop = false;
             // 
             // label7
             // 
@@ -1129,6 +1084,19 @@
             this.button_T1_Normal.TabIndex = 2;
             this.button_T1_Normal.Text = "Change";
             this.button_T1_Normal.UseVisualStyleBackColor = false;
+            this.button_T1_Normal.Click += new System.EventHandler(this.Button_T1_Normal_Click);
+            // 
+            // pictureBox_T1_Normal
+            // 
+            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
+            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Normal.TabIndex = 1;
+            this.pictureBox_T1_Normal.TabStop = false;
             // 
             // label6
             // 
@@ -1176,6 +1144,18 @@
             this.button_T1_Color.Text = "Change";
             this.button_T1_Color.UseVisualStyleBackColor = false;
             this.button_T1_Color.Click += new System.EventHandler(this.Button_T1_Color_Click);
+            // 
+            // pictureBox_T1_Color
+            // 
+            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
+            this.pictureBox_T1_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Color.TabIndex = 1;
+            this.pictureBox_T1_Color.TabStop = false;
             // 
             // label5
             // 
@@ -1241,90 +1221,6 @@
             this.panel8.Size = new System.Drawing.Size(328, 2);
             this.panel8.TabIndex = 15;
             // 
-            // pictureBox_T2_Height
-            // 
-            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Height.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
-            this.pictureBox_T2_Height.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Height.TabIndex = 1;
-            this.pictureBox_T2_Height.TabStop = false;
-            // 
-            // pictureBox_T2_Normal
-            // 
-            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
-            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Normal.TabIndex = 1;
-            this.pictureBox_T2_Normal.TabStop = false;
-            // 
-            // pictureBox_T2_Color
-            // 
-            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Color.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
-            this.pictureBox_T2_Color.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Color.TabIndex = 1;
-            this.pictureBox_T2_Color.TabStop = false;
-            // 
-            // pictureBox_Light_Color
-            // 
-            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
-            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
-            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
-            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_Light_Color.TabIndex = 1;
-            this.pictureBox_Light_Color.TabStop = false;
-            // 
-            // pictureBox_T1_Height
-            // 
-            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Height.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
-            this.pictureBox_T1_Height.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Height.TabIndex = 1;
-            this.pictureBox_T1_Height.TabStop = false;
-            // 
-            // pictureBox_T1_Normal
-            // 
-            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
-            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Normal.TabIndex = 1;
-            this.pictureBox_T1_Normal.TabStop = false;
-            // 
-            // pictureBox_T1_Color
-            // 
-            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Color.Location = new System.Drawing.Point(125, 10);
-            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
-            this.pictureBox_T1_Color.Size = new System.Drawing.Size(87, 24);
-            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Color.TabIndex = 1;
-            this.pictureBox_T1_Color.TabStop = false;
-            // 
             // pictureBox
             // 
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1364,10 +1260,13 @@
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -1375,6 +1274,7 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -1383,16 +1283,12 @@
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -1405,28 +1301,10 @@
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem triangle1ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem flatToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem textureToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem triangle2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem colorToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem flatToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem textureToolStripMenuItem1;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ToolStripMenuItem normalMapToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem normalMapToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem heightMapToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem2;
-        private System.Windows.Forms.ToolStripMenuItem heightMapToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem fromImageToolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem exampleToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem crystalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem treadPlateToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exampleToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem crystalToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem treadPlateToolStripMenuItem1;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
@@ -1449,7 +1327,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel9;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel10;
-        private System.Windows.Forms.Button button_T1_PhongFactor;
         private System.Windows.Forms.Label label_T1_PhongFactor;
         private System.Windows.Forms.Label label_T1_PhongWeight;
         private System.Windows.Forms.Panel panel9;
@@ -1468,13 +1345,10 @@
         private System.Windows.Forms.Panel panel7;
         private System.Windows.Forms.Panel panel6;
         private System.Windows.Forms.Panel panel8;
-        private System.Windows.Forms.Button button_T1_PhongWeight;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel12;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel13;
-        private System.Windows.Forms.Button button_T2_PhongWeight;
-        private System.Windows.Forms.Button button_T2_PhongFactor;
         private System.Windows.Forms.Label label_T2_PhongFactor;
         private System.Windows.Forms.Label label_T2_PhongWeight;
         private System.Windows.Forms.Panel panel4;
@@ -1495,6 +1369,18 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
+        private System.Windows.Forms.ToolStripMenuItem triangle2ToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exampleToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem crystalToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem treadPlateToolStripMenuItem1;
+        private System.Windows.Forms.TextBox textBox_T1_Factor;
+        private System.Windows.Forms.TextBox textBox_T2_Factor;
+        private System.Windows.Forms.TextBox textBox_T1_Weight;
+        private System.Windows.Forms.TextBox textBox_T2_Weight;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label label12;
     }
 }
 

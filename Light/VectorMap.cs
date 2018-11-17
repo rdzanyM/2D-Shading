@@ -14,10 +14,10 @@ namespace Light
         int height;
         double[,][] map;
 
-        public NormalMap(Bitmap normalMap)
+        public NormalMap(Bitmap normalMap, int width, int height)
         {
-            width = normalMap.Width;
-            height = normalMap.Height;
+            this.width = width;
+            this.height = height;
             map = new double[width, height][];
             for (int i = 0; i < width; i++)
             {
@@ -46,11 +46,11 @@ namespace Light
             map[0, 0][2] = 1;
         }
 
-        public NormalMap Disturb(HeightMap heightMap)
+        public NormalMap Disturb(HeightMap heightMap, Control c)
         {
             NormalMap disturbed = new NormalMap();
-            disturbed.width = Screen.PrimaryScreen.WorkingArea.Width;
-            disturbed.height = Screen.PrimaryScreen.WorkingArea.Height;
+            disturbed.width = c.Width;
+            disturbed.height = c.Height;
             disturbed.map = new double[disturbed.width, disturbed.height][];
             for (int x = 0; x < disturbed.width; x++)
             {
@@ -84,10 +84,10 @@ namespace Light
         int height;
         double[,] map;
 
-        public HeightMap(Bitmap heightMap)
+        public HeightMap(Bitmap heightMap, int width, int height)
         {
-            width = heightMap.Width;
-            height = heightMap.Height;
+            this.width = width;
+            this.height = height;
             map = new double[width, height];
             for (int i = 0; i < width; i++)
                 for (int j = 0; j < height; j++)
