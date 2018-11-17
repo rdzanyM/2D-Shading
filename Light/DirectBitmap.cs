@@ -28,6 +28,17 @@ namespace Light
             Bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppPArgb, BitsHandle.AddrOfPinnedObject());
         }
 
+        public DirectBitmap(Bitmap b, int width, int height) : this(width, height)
+        {
+            for(int i = 0; i < width; i++)
+            {
+                for(int j = 0; j < height; j++)
+                {
+                    SetPixel(i, j, b.GetPixel(i%width, j%height));
+                }
+            }
+        }
+
         public void SetPixel(int x, int y, Color color)
         {
             int index = x + (y * Width);

@@ -13,22 +13,48 @@ namespace Light
 {
     public partial class Form1 : Form
     {
+        private class TriangleInfo
+        {
+            /// <summary>
+            /// The power in phong reflection model is equal to 2 ^ <see cref="phongFactor"/>.
+            /// The higher the power the narrower the reflection.
+            /// </summary>
+            public int phongFactor = 4;
+            /// <summary>
+            /// How much of the light is reflected.
+            /// 1 - <see cref="phongWeight"/> is diffused.
+            /// </summary>
+            public double phongWeight = 0.7;
+            /// <summary>
+            /// Triangle color
+            /// </summary>
+            public DirectBitmap texture;
+            /// <summary>
+            /// Map of normal vectors from image
+            /// </summary>
+            public NormalMap normalMap = new NormalMap();
+            /// <summary>
+            /// Map of height vectors from image
+            /// </summary>
+            public HeightMap heightMap = new HeightMap();
+            /// <summary>
+            /// Map of normal vectors with applied height disturbance
+            /// </summary>
+            public NormalMap vectorMap;
+            /// <summary>
+            /// Assigns the value to <see cref="vectorMap"/> based on <see cref="normalMap"/> and <see cref="heightMap"/>
+            /// </summary>
+            public void Disturb()
+            {
+                vectorMap = normalMap.Disturb(heightMap);
+            }
+        }
         Graphics gfx;
         /// <summary>
         /// Parameter defining animated light source position.
         /// Incremented after every frame with animated light source.
         /// </summary>
         double t = 0;
-        /// <summary>
-        /// The power in phong reflection model is equal to 2 ^ <see cref="phongFactor"/>.
-        /// The higher the power the narrower the reflection.
-        /// </summary>
-        int[] phongFactor = { 3, 7 };
-        /// <summary>
-        /// How much of the light is reflected.
-        /// 1 - <see cref="phongWeight"/> is diffused.
-        /// </summary>
-        double phongWeight = 0.7;
         /// <summary>
         /// Which vertex is moving (-1 if none)
         /// </summary>
@@ -37,10 +63,7 @@ namespace Light
         /// Has nothing changed since last call to <see cref="Redraw"/>
         /// </summary>
         bool drawn = false;
-        /// <summary>
-        /// Colors of two triangles
-        /// </summary>
-        DirectBitmap[] textures = new DirectBitmap[2];
+        TriangleInfo[] triangles = { new TriangleInfo(), new TriangleInfo()};
         Color lightColor = Color.White;
         /// <summary>
         /// Position of light source (x,y,z) where z > 0
@@ -56,18 +79,6 @@ namespace Light
         /// </summary>
         DirectBitmap bitmap = new DirectBitmap(Screen.PrimaryScreen.WorkingArea.Width, Screen.PrimaryScreen.WorkingArea.Height);
         /// <summary>
-        /// Maps of normal vectors from image
-        /// </summary>
-        NormalMap[] normalMaps = new NormalMap[2];
-        /// <summary>
-        /// Maps of height vectors from image
-        /// </summary>
-        HeightMap[] heightMaps = new HeightMap[2];
-        /// <summary>
-        /// Maps of normal vectors including height disturbance
-        /// </summary>
-        NormalMap[] vectorMaps = new NormalMap[2];
-        /// <summary>
         /// Vertices of two triangles
         /// </summary>
         Point[] points = { new Point(10, 10), new Point(20, 400), new Point(666, 20), new Point(500, 450), new Point(500, 480), new Point(550, 450) };
@@ -80,17 +91,12 @@ namespace Light
             gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             gfx.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-            textures[0] = new DirectBitmap(1, 1);
-            textures[0].SetPixel(0, 0, Color.Aqua);
-            textures[1] = new DirectBitmap(1, 1);
-            textures[1].SetPixel(0, 0, Color.Crimson);
-            constantLight.Checked = true;
-            normalMaps[0] = new NormalMap();
-            normalMaps[1] = new NormalMap();
-            heightMaps[0] = new HeightMap();
-            heightMaps[1] = new HeightMap();
-            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
-            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+            triangles[0].texture = new DirectBitmap(1, 1);
+            triangles[0].texture.SetPixel(0, 0, Color.Aqua);
+            triangles[1].texture = new DirectBitmap(1, 1);
+            triangles[1].texture.SetPixel(0, 0, Color.Crimson);
+            triangles[0].Disturb();
+            triangles[1].Disturb();
             T1_Crystal_Click(null, null);
             timer.Enabled = true;
         }
@@ -125,7 +131,7 @@ namespace Light
         private void Fill()
         {
             List<Task> tasks = new List<Task>();
-            if (constantLight.Checked)
+            if (radioButton_Constant.Checked)
             {
                 lightPos[0] = 111;
                 lightPos[1] = 111;
@@ -155,7 +161,7 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0], vectorMaps[0], phongFactor[0]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, triangles[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
@@ -177,20 +183,20 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1], vectorMaps[1], phongFactor[1]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, triangles[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, DirectBitmap d, NormalMap n, int ph)
+            void FillLine(int i, int max, int yy, TriangleInfo triangle)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, d, n, ph));
+                Task t = new Task(() => TaskFor(i, max, yy, triangle));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, DirectBitmap d, NormalMap n, int ph)
+            void TaskFor(int s, int max, int yy, TriangleInfo triangle)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
@@ -198,16 +204,16 @@ namespace Light
                     lightV[0] = lightPos[0] - i;
                     double length = Math.Sqrt(lightV[0] * lightV[0] + lightV[1] * lightV[1] + lightV[2] * lightV[2]);
                     double[] lightV1 = { lightV[0] / length, lightV[1] / length, lightV[2] / length };
-                    double[] normalV = n.GetVector(i, yy);
+                    double[] normalV = triangle.vectorMap.GetVector(i, yy);
                     double diffuseReflection = Cos(normalV, lightV1);
                     double ln = lightV1[0] * normalV[0] + lightV1[1] * normalV[1] + lightV1[2] * normalV[2];
                     double specularReflection = 2 * normalV[2] * ln - lightV1[2];
                     if(specularReflection < 0)
                         specularReflection = 0;
                     else
-                        for (int p = 0; p < ph; p++)
+                        for (int p = 0; p < triangle.phongFactor; p++)
                             specularReflection *= specularReflection;
-                    bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, specularReflection * phongWeight + diffuseReflection * (1 - phongWeight)));
+                    bitmap.SetPixel(i, yy, Multiply(triangle.texture.GetPixel(i, yy), lightColor, specularReflection * triangle.phongWeight + diffuseReflection * (1 - triangle.phongWeight)));
                 }
             }
 
@@ -275,32 +281,9 @@ namespace Light
         }
 
 
-
-        //Light
-        private void colorToolStripMenuItem2_Click(object sender, EventArgs e)
-        {
-            ColorDialog cd = new ColorDialog();
-            if (cd.ShowDialog() == DialogResult.OK) lightColor = cd.Color;
-            drawn = false;
-        }
-
-        private void constantToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            constantLight.Checked = true;
-            variableLight.Checked = false;
-            drawn = false;
-        }
-
-        private void variableToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            variableLight.Checked = true;
-            constantLight.Checked = false;
-            drawn = false;
-        }
-
         private void timer_Tick(object sender, EventArgs e)
         {
-            if (variableLight.Checked || !drawn)
+            if (radioButton_Animated.Checked || !drawn)
             {
                 drawn = true;
                 Redraw();
@@ -331,8 +314,8 @@ namespace Light
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                textures[0] = new DirectBitmap(1, 1);
-                textures[0].SetPixel(0, 0, cd.Color);
+                triangles[0].texture = new DirectBitmap(1, 1);
+                triangles[0].texture.SetPixel(0, 0, cd.Color);
             }
             drawn = false;
         }
@@ -342,8 +325,8 @@ namespace Light
             ColorDialog cd = new ColorDialog();
             if (cd.ShowDialog() == DialogResult.OK)
             {
-                textures[1] = new DirectBitmap(1, 1);
-                textures[1].SetPixel(0, 0, cd.Color);
+                triangles[1].texture = new DirectBitmap(1, 1);
+                triangles[1].texture.SetPixel(0, 0, cd.Color);
             }
             drawn = false;
         }
@@ -357,10 +340,10 @@ namespace Light
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
-                    textures[0] = new DirectBitmap(b.Width, b.Height);
+                    triangles[0].texture = new DirectBitmap(b.Width, b.Height);
                     for (int i = 0; i < b.Width; i++)
                         for (int j = 0; j < b.Height; j++)
-                            textures[0].SetPixel(i,j,b.GetPixel(i,j));
+                            triangles[0].texture.SetPixel(i,j,b.GetPixel(i,j));
                 }
             }
             drawn = false;
@@ -375,10 +358,10 @@ namespace Light
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
                     Bitmap b = new Bitmap(dlg.FileName);
-                    textures[1] = new DirectBitmap(b.Width, b.Height);
+                    triangles[1].texture = new DirectBitmap(b.Width, b.Height);
                     for (int i = 0; i < b.Width; i++)
                         for (int j = 0; j < b.Height; j++)
-                            textures[1].SetPixel(i, j, b.GetPixel(i, j));
+                            triangles[1].texture.SetPixel(i, j, b.GetPixel(i, j));
                 }
             }
             drawn = false;
@@ -392,8 +375,8 @@ namespace Light
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    normalMaps[0] = new NormalMap(new Bitmap(dlg.FileName));
-                    vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+                    triangles[0].normalMap = new NormalMap(new Bitmap(dlg.FileName));
+                    triangles[0].Disturb();
                 }
             }
             drawn = false;
@@ -407,8 +390,8 @@ namespace Light
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    normalMaps[1] = new NormalMap(new Bitmap(dlg.FileName));
-                    vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                    triangles[1].normalMap = new NormalMap(new Bitmap(dlg.FileName));
+                    triangles[1].Disturb();
                 }
             }
             drawn = false;
@@ -422,8 +405,8 @@ namespace Light
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    heightMaps[0] = new HeightMap(new Bitmap(dlg.FileName));
-                    vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+                    triangles[0].heightMap = new HeightMap(new Bitmap(dlg.FileName));
+                    triangles[0].Disturb();
                 }
             }
             drawn = false;
@@ -437,8 +420,8 @@ namespace Light
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
-                    heightMaps[1] = new HeightMap(new Bitmap(dlg.FileName));
-                    vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                    triangles[1].heightMap = new HeightMap(new Bitmap(dlg.FileName));
+                    triangles[1].Disturb();
                 }
             }
             drawn = false;
@@ -447,53 +430,162 @@ namespace Light
         private void T1_Crystal_Click(object sender, EventArgs e)
         {
             Bitmap b = Properties.Resources.Crystal_Texture;
-            textures[0] = new DirectBitmap(b.Width, b.Height);
+            triangles[0].texture = new DirectBitmap(b.Width, b.Height);
             for (int i = 0; i < b.Width; i++)
                 for (int j = 0; j < b.Height; j++)
-                    textures[0].SetPixel(i, j, b.GetPixel(i, j));
-            normalMaps[0] = new NormalMap(Properties.Resources.Crystal_Normal);
-            heightMaps[0] = new HeightMap();
-            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+                    triangles[0].texture.SetPixel(i, j, b.GetPixel(i, j));
+            triangles[0].normalMap = new NormalMap(Properties.Resources.Crystal_Normal);
+            triangles[0].heightMap = new HeightMap();
+            triangles[0].Disturb();
+            triangles[0].phongFactor = 4;
+            triangles[0].phongWeight = 0.7;
             drawn = false;
         }
 
         private void T1_TreadPlate_Click(object sender, EventArgs e)
         {
             Bitmap b = Properties.Resources.TreadPlate_Texture;
-            textures[0] = new DirectBitmap(b.Width, b.Height);
+            triangles[0].texture = new DirectBitmap(b.Width, b.Height);
             for (int i = 0; i < b.Width; i++)
                 for (int j = 0; j < b.Height; j++)
-                    textures[0].SetPixel(i, j, b.GetPixel(i, j));
-            normalMaps[0] = new NormalMap(Properties.Resources.TreadPlate_Normal);
-            heightMaps[0] = new HeightMap(Properties.Resources.TreadPlate_Texture);
-            vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
+                    triangles[0].texture.SetPixel(i, j, b.GetPixel(i, j));
+            triangles[0].normalMap = new NormalMap(Properties.Resources.TreadPlate_Normal);
+            triangles[0].heightMap = new HeightMap(Properties.Resources.TreadPlate_Texture);
+            triangles[0].Disturb();
+            triangles[0].phongFactor = 7;
+            triangles[0].phongWeight = 0.7;
             drawn = false;
         }
 
         private void T2_Crystal_Click(object sender, EventArgs e)
         {
             Bitmap b = Properties.Resources.Crystal_Texture;
-            textures[1] = new DirectBitmap(b.Width, b.Height);
+            triangles[1].texture = new DirectBitmap(b.Width, b.Height);
             for (int i = 0; i < b.Width; i++)
                 for (int j = 0; j < b.Height; j++)
-                    textures[1].SetPixel(i, j, b.GetPixel(i, j));
-            normalMaps[1] = new NormalMap(Properties.Resources.Crystal_Normal);
-            heightMaps[1] = new HeightMap();
-            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                    triangles[1].texture.SetPixel(i, j, b.GetPixel(i, j));
+            triangles[1].normalMap = new NormalMap(Properties.Resources.Crystal_Normal);
+            triangles[1].heightMap = new HeightMap();
+            triangles[1].Disturb();
+            triangles[1].phongFactor = 4;
+            triangles[1].phongWeight = 0.7;
             drawn = false;
         }
 
         private void T2_TreadPlate_Click(object sender, EventArgs e)
         {
             Bitmap b = Properties.Resources.TreadPlate_Texture;
-            textures[1] = new DirectBitmap(b.Width, b.Height);
+            triangles[1].texture = new DirectBitmap(b.Width, b.Height);
             for (int i = 0; i < b.Width; i++)
                 for (int j = 0; j < b.Height; j++)
-                    textures[1].SetPixel(i, j, b.GetPixel(i, j));
-            normalMaps[1] = new NormalMap(Properties.Resources.TreadPlate_Normal);
-            heightMaps[1] = new HeightMap(Properties.Resources.TreadPlate_Texture);
-            vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
+                    triangles[1].texture.SetPixel(i, j, b.GetPixel(i, j));
+            triangles[1].normalMap = new NormalMap(Properties.Resources.TreadPlate_Normal);
+            triangles[1].heightMap = new HeightMap(Properties.Resources.TreadPlate_Texture);
+            triangles[1].Disturb();
+            triangles[1].phongFactor = 7;
+            triangles[1].phongWeight = 0.7;
             drawn = false;
+        }
+
+        /// <summary>
+        /// Returns the bitmap scaled to width 90
+        /// </summary>
+        private Bitmap Scale90(Bitmap b)
+        {
+            double d = b.Width / 90.0;
+            return new Bitmap(b as Image, 90, (int)(b.Width / d));
+        }
+
+        //Light
+        private void Button_Light_Color_Click(object sender, EventArgs e)
+        {
+            ColorDialog cd = new ColorDialog();
+            if (cd.ShowDialog() == DialogResult.OK)
+            {
+                lightColor = cd.Color;
+                pictureBox_Light_Color.BackColor = lightColor;
+                pictureBox_Light_Color.Refresh();
+                drawn = false;
+            }
+        }
+        private void RadioButton_Constant_Click(object sender, EventArgs e)
+        {
+            radioButton_Constant.Text = "Constant [111, 111, 222]";
+            radioButton_Constant.Refresh();
+            drawn = false;
+        }
+        private void RadioButton_Animated_CheckedChanged(object sender, EventArgs e)
+        {
+            radioButton_Constant.Text = "Constant";
+            radioButton_Constant.Refresh();
+            drawn = false;
+        }
+
+        //Triangles
+        private void Button_T1_Color_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show("Do you want to load a texture from an image?", "Color settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (OpenFileDialog dlg = new OpenFileDialog())
+                {
+                    dlg.Title = "Select Image";
+                    dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        Bitmap b = new Bitmap(dlg.FileName);
+                        triangles[0].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+                        pictureBox_T1_Color.Image = Scale90(b);
+                        pictureBox_T1_Color.Refresh();
+                    }
+                }
+                drawn = false;
+            }
+            else
+            {
+                ColorDialog cd = new ColorDialog();
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    triangles[0].texture = new DirectBitmap(1, 1);
+                    triangles[0].texture.SetPixel(0, 0, cd.Color);
+                    pictureBox_T1_Color.BackColor = cd.Color;
+                    pictureBox_T1_Color.Image = null;
+                    pictureBox_T1_Color.Refresh();
+                }
+                drawn = false;
+            }
+        }
+
+        private void Button_T2_Color_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to load a texture from an image?", "Color settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                using (OpenFileDialog dlg = new OpenFileDialog())
+                {
+                    dlg.Title = "Select Image";
+                    dlg.Filter = "bmp files (*.bmp)|*.bmp";
+                    if (dlg.ShowDialog() == DialogResult.OK)
+                    {
+                        Bitmap b = new Bitmap(dlg.FileName);
+                        triangles[1].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+                        pictureBox_T2_Color.Image = Scale90(b);
+                        pictureBox_T2_Color.Refresh();
+                    }
+                }
+                drawn = false;
+            }
+            else
+            {
+                ColorDialog cd = new ColorDialog();
+                if (cd.ShowDialog() == DialogResult.OK)
+                {
+                    triangles[1].texture = new DirectBitmap(1, 1);
+                    triangles[1].texture.SetPixel(0, 0, cd.Color);
+                    pictureBox_T2_Color.BackColor = cd.Color;
+                    pictureBox_T2_Color.Image = null;
+                    pictureBox_T2_Color.Refresh();
+                }
+                drawn = false;
+            }
         }
     }
 }

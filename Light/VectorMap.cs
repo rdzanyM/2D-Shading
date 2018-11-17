@@ -46,7 +46,7 @@ namespace Light
             map[0, 0][2] = 1;
         }
 
-        public NormalMap disturb(HeightMap heightMap)
+        public NormalMap Disturb(HeightMap heightMap)
         {
             NormalMap disturbed = new NormalMap();
             disturbed.width = Screen.PrimaryScreen.WorkingArea.Width;
