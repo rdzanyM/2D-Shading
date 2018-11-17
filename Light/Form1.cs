@@ -21,9 +21,9 @@ namespace Light
         double t = 0;
         /// <summary>
         /// The power in phong reflection model is equal to 2 ^ <see cref="phongFactor"/>.
-        /// The greater the power the narrower the reflection.
+        /// The higher the power the narrower the reflection.
         /// </summary>
-        int phongFactor = 7;
+        int[] phongFactor = { 3, 7 };
         /// <summary>
         /// How much of the light is reflected.
         /// 1 - <see cref="phongWeight"/> is diffused.
@@ -70,7 +70,7 @@ namespace Light
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
-        Point[] points = { new Point(10, 10), new Point(20, 300), new Point(300, 20), new Point(400, 300), new Point(50, 350), new Point(260, 10) };
+        Point[] points = { new Point(10, 10), new Point(20, 400), new Point(666, 20), new Point(500, 450), new Point(500, 480), new Point(550, 450) };
 
         public Form1()
         {
@@ -127,15 +127,15 @@ namespace Light
             List<Task> tasks = new List<Task>();
             if (constantLight.Checked)
             {
-                lightPos[0] = 100;
-                lightPos[1] = 100;
-                lightPos[2] = 300;
+                lightPos[0] = 111;
+                lightPos[1] = 111;
+                lightPos[2] = 222;
             }
             else
             {
-                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/2.22) / 4);
-                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/Math.E) / 4);
-                lightPos[2] = 80 + Math.Sin(2*t) * 20;
+                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/1.9) / 4);
+                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/2.3) / 4);
+                lightPos[2] = 40 + Math.Sin(2*t) * 20;
                 t += 0.01;
             }
             Edge[] ET = new Edge[Screen.PrimaryScreen.WorkingArea.Height];
@@ -155,7 +155,7 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0], vectorMaps[0]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[0], vectorMaps[0], phongFactor[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
@@ -177,20 +177,20 @@ namespace Light
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
                 for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1], vectorMaps[1]);
+                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, textures[1], vectorMaps[1], phongFactor[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, DirectBitmap d, NormalMap n)
+            void FillLine(int i, int max, int yy, DirectBitmap d, NormalMap n, int ph)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, d, n));
+                Task t = new Task(() => TaskFor(i, max, yy, d, n, ph));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, DirectBitmap d, NormalMap n)
+            void TaskFor(int s, int max, int yy, DirectBitmap d, NormalMap n, int ph)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
@@ -205,7 +205,7 @@ namespace Light
                     if(specularReflection < 0)
                         specularReflection = 0;
                     else
-                        for (int p = 0; p < phongFactor; p++)
+                        for (int p = 0; p < ph; p++)
                             specularReflection *= specularReflection;
                     bitmap.SetPixel(i, yy, Multiply(d.GetPixel(i, yy), lightColor, specularReflection * phongWeight + diffuseReflection * (1 - phongWeight)));
                 }
@@ -452,7 +452,7 @@ namespace Light
                 for (int j = 0; j < b.Height; j++)
                     textures[0].SetPixel(i, j, b.GetPixel(i, j));
             normalMaps[0] = new NormalMap(Properties.Resources.Crystal_Normal);
-            heightMaps[0] = new HeightMap(Properties.Resources.Crystal_Texture);
+            heightMaps[0] = new HeightMap();
             vectorMaps[0] = normalMaps[0].disturb(heightMaps[0]);
             drawn = false;
         }
@@ -478,7 +478,7 @@ namespace Light
                 for (int j = 0; j < b.Height; j++)
                     textures[1].SetPixel(i, j, b.GetPixel(i, j));
             normalMaps[1] = new NormalMap(Properties.Resources.Crystal_Normal);
-            heightMaps[1] = new HeightMap(Properties.Resources.Crystal_Texture);
+            heightMaps[1] = new HeightMap();
             vectorMaps[1] = normalMaps[1].disturb(heightMaps[1]);
             drawn = false;
         }
