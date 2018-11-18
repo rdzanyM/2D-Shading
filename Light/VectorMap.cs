@@ -14,7 +14,7 @@ namespace Light
         int height;
         double[,][] map;
 
-        public NormalMap(Bitmap normalMap, int width, int height)
+        public NormalMap(Bitmap normalMap, int width, int height, bool up)
         {
             this.width = width;
             this.height = height;
@@ -26,10 +26,9 @@ namespace Light
                     map[i, j] = new double[3];
                     double d = normalMap.GetPixel(i, j).B - 127;
                     if (d == 0) d += 1e-8;
-                    map[i, j][0] = (normalMap.GetPixel(i, j).R - 127)/d;
-                    map[i, j][1] = (normalMap.GetPixel(i, j).G - 127) /d;   // y axis is pointed downwards on Drawing.Bitmap
-                                                                            // but sometimes it's not inverted on normal map
-                                                                            // ToDo - let user choose the direction of y axis
+                    map[i, j][0] = (normalMap.GetPixel(i, j).R - 127) / d;
+                    map[i, j][1] = (normalMap.GetPixel(i, j).G - 127) / d;   // y axis is pointed downwards on Drawing.Bitmap but sometimes it's pointed up on normal map
+                    if (up) map[i, j][1] *= -1;
                     map[i, j][2] = 1;
                 }
             }

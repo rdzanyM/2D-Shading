@@ -82,7 +82,7 @@ namespace Light
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
-        Point[] points = { new Point(10, 10), new Point(20, 400), new Point(666, 20), new Point(500, 450), new Point(500, 480), new Point(550, 450) };
+        Point[] points = { new Point(10, 10), new Point(20, 400), new Point(666, 20), new Point(150, 322), new Point(700, 480), new Point(666, 21) };
 
         public Form1()
         {
@@ -92,13 +92,11 @@ namespace Light
             gfx.SmoothingMode = System.Drawing.Drawing2D.SmoothingMode.AntiAlias;
             gfx.PixelOffsetMode = System.Drawing.Drawing2D.PixelOffsetMode.HighQuality;
             gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.SingleBitPerPixelGridFit;
-            triangles[0].texture = new DirectBitmap(1, 1);
-            triangles[0].texture.SetPixel(0, 0, Color.Aqua);
-            triangles[1].texture = new DirectBitmap(1, 1);
-            triangles[1].texture.SetPixel(0, 0, Color.Crimson);
-            triangles[0].Disturb(pictureBox);
-            triangles[1].Disturb(pictureBox);
-            T1_Crystal_Click(null, null);
+            CrystalTreadPlateToolStripMenuItem_Click(null, null);
+            pictureBox_T1_Normal.BackColor = Color.FromArgb(127, 127, 255);
+            pictureBox_T2_Normal.BackColor = Color.FromArgb(127, 127, 255);
+            pictureBox_T1_Height.BackColor = Color.FromArgb(255, 255, 255);
+            pictureBox_T2_Height.BackColor = Color.FromArgb(255, 255, 255);
             timer.Enabled = true;
         }
         
@@ -126,7 +124,7 @@ namespace Light
 
         private bool OffScreen(Point p)
         {
-            return p.X < 8 || p.Y < 8 || p.X > 800 || p.Y > 600;
+            return p.X < 4 || p.Y < 4 || p.X > pictureBox.Width - 4 || p.Y > pictureBox.Height - 4;
         }
 
         private void Fill()
@@ -140,9 +138,9 @@ namespace Light
             }
             else
             {
-                lightPos[0] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Width  * Math.Sin(t/1.9) / 4);
-                lightPos[1] = Math.Abs(Screen.PrimaryScreen.WorkingArea.Height * Math.Sin(t/2.3) / 4);
-                lightPos[2] = 40 + Math.Sin(2*t) * 20;
+                lightPos[0] = Math.Abs(pictureBox.Width * Math.Sin(t/2));
+                lightPos[1] = Math.Abs(pictureBox.Height * Math.Sin(t/2.37));
+                lightPos[2] = 60 + Math.Sin(2*t) * 20;
                 t += 0.01;
             }
             Edge[] ET = new Edge[Screen.PrimaryScreen.WorkingArea.Height];
@@ -161,8 +159,8 @@ namespace Light
                     k++;
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
-                for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, triangles[0]);
+                for (int i = 0; i < AET.Count - 1; i += 2)  //Filled polygons are triangles, so this loop will never be executed more than once (each line intersects triangle at no more than 2 places).
+                    FillLineAsync((int)AET[i].x, (int)AET[i + 1].x, y, triangles[0]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
@@ -183,21 +181,21 @@ namespace Light
                     k++;
                 }
                 AET.Sort((e1, e2) => e1.x.CompareTo(e2.x));
-                for (int i = 0; i < AET.Count - 1; i += 2)
-                    FillLine((int)AET[i].x, (int)AET[i + 1].x, y, triangles[1]);
+                for (int i = 0; i < AET.Count - 1; i += 2)  //Filled polygons are triangles, so this loop will never be executed more than once (each line intersects triangle at no more than 2 places).
+                    FillLineAsync((int)AET[i].x, (int)AET[i + 1].x, y, triangles[1]);
                 y++;
                 foreach (Edge e in AET) e.x += e.d;
             }
             Task.WaitAll(tasks.ToArray());
 
-            void FillLine(int i, int max, int yy, TriangleInfo triangle)
+            void FillLineAsync(int i, int max, int yy, TriangleInfo triangle)
             {
-                Task t = new Task(() => TaskFor(i, max, yy, triangle));
+                Task t = new Task(() => FillLine(i, max, yy, triangle));
                 tasks.Add(t);
                 t.Start();
             }
             
-            void TaskFor(int s, int max, int yy, TriangleInfo triangle)
+            void FillLine(int s, int max, int yy, TriangleInfo triangle)
             {
                 double[] lightV = { 0, lightPos[1] - yy, lightPos[2] };
                 for (int i = s; i < max; i++)
@@ -211,9 +209,8 @@ namespace Light
                     double specularReflection = 2 * normalV[2] * ln - lightV1[2];
                     if(specularReflection < 0)
                         specularReflection = 0;
-                    else
-                        for (int p = 0; p < triangle.phongFactor; p++)
-                            specularReflection *= specularReflection;
+                    else for (int p = 0; p < triangle.phongFactor; p++)
+                        specularReflection *= specularReflection;
                     bitmap.SetPixel(i, yy, Multiply(triangle.texture.GetPixel(i, yy), lightColor, specularReflection * triangle.phongWeight + diffuseReflection * (1 - triangle.phongWeight)));
                 }
             }
@@ -247,7 +244,7 @@ namespace Light
 
         }
 
-        private void pictureBox_MouseDown(object sender, MouseEventArgs e)
+        private void PictureBox_MouseDown(object sender, MouseEventArgs e)
         {
             if (e.Button != MouseButtons.Left) return;
             for (int i = 0; i < 6; i++)
@@ -267,12 +264,12 @@ namespace Light
             }
         }
 
-        private void pictureBox_MouseUp(object sender, MouseEventArgs e)
+        private void PictureBox_MouseUp(object sender, MouseEventArgs e)
         {
             moving = -1;
         }
 
-        private void pictureBox_MouseMove(object sender, MouseEventArgs e)
+        private void PictureBox_MouseMove(object sender, MouseEventArgs e)
         {
             if (moving >= 0 && !OffScreen(e.Location))
             {
@@ -282,7 +279,7 @@ namespace Light
         }
 
 
-        private void timer_Tick(object sender, EventArgs e)
+        private void Timer_Tick(object sender, EventArgs e)
         {
             if (radioButton_Animated.Checked || !drawn)
             {
@@ -307,66 +304,6 @@ namespace Light
             public double x;
             public double d;
             public Edge next;
-        }
-
-        private void T1_Crystal_Click(object sender, EventArgs e)
-        {
-            Bitmap b = Properties.Resources.Crystal_Texture;
-            triangles[0].texture = new DirectBitmap(b.Width, b.Height);
-            for (int i = 0; i < b.Width; i++)
-                for (int j = 0; j < b.Height; j++)
-                    triangles[0].texture.SetPixel(i, j, b.GetPixel(i, j));
-            //triangles[0].normalMap = new NormalMap(Properties.Resources.Crystal_Normal);
-            triangles[0].heightMap = new HeightMap();
-            //triangles[0].Disturb();
-            triangles[0].phongFactor = 4;
-            triangles[0].phongWeight = 0.7;
-            drawn = false;
-        }
-
-        private void T1_TreadPlate_Click(object sender, EventArgs e)
-        {
-            Bitmap b = Properties.Resources.TreadPlate_Texture;
-            triangles[0].texture = new DirectBitmap(b.Width, b.Height);
-            for (int i = 0; i < b.Width; i++)
-                for (int j = 0; j < b.Height; j++)
-                    triangles[0].texture.SetPixel(i, j, b.GetPixel(i, j));
-            //triangles[0].normalMap = new NormalMap(Properties.Resources.TreadPlate_Normal);
-            //triangles[0].heightMap = new HeightMap(Properties.Resources.TreadPlate_Texture);
-            //triangles[0].Disturb();
-            triangles[0].phongFactor = 7;
-            triangles[0].phongWeight = 0.7;
-            drawn = false;
-        }
-
-        private void T2_Crystal_Click(object sender, EventArgs e)
-        {
-            Bitmap b = Properties.Resources.Crystal_Texture;
-            triangles[1].texture = new DirectBitmap(b.Width, b.Height);
-            for (int i = 0; i < b.Width; i++)
-                for (int j = 0; j < b.Height; j++)
-                    triangles[1].texture.SetPixel(i, j, b.GetPixel(i, j));
-            //triangles[1].normalMap = new NormalMap(Properties.Resources.Crystal_Normal);
-            triangles[1].heightMap = new HeightMap();
-            //triangles[1].Disturb();
-            triangles[1].phongFactor = 4;
-            triangles[1].phongWeight = 0.7;
-            drawn = false;
-        }
-
-        private void T2_TreadPlate_Click(object sender, EventArgs e)
-        {
-            Bitmap b = Properties.Resources.TreadPlate_Texture;
-            triangles[1].texture = new DirectBitmap(b.Width, b.Height);
-            for (int i = 0; i < b.Width; i++)
-                for (int j = 0; j < b.Height; j++)
-                    triangles[1].texture.SetPixel(i, j, b.GetPixel(i, j));
-            //triangles[1].normalMap = new NormalMap(Properties.Resources.TreadPlate_Normal);
-            //triangles[1].heightMap = new HeightMap(Properties.Resources.TreadPlate_Texture);
-            //triangles[1].Disturb();
-            triangles[1].phongFactor = 7;
-            triangles[1].phongWeight = 0.7;
-            drawn = false;
         }
 
         /// <summary>
@@ -472,14 +409,22 @@ namespace Light
 
         private void Button_T1_Normal_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            if (MessageBox.Show("Do you want to load a default(flat) normal map?", "Remove normal map?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                triangles[0].normalMap = new NormalMap();
+                triangles[0].Disturb(pictureBox);
+                pictureBox_T1_Normal.Image = null;
+                pictureBox_T1_Normal.Refresh();
+            }
+            else using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Select Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
+                    bool up = MessageBox.Show("Is the y(green) axis on image pointed up?", "Axis settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
                     Bitmap b = new Bitmap(dlg.FileName);
-                    triangles[0].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+                    triangles[0].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), up);
                     triangles[0].Disturb(pictureBox);
                     pictureBox_T1_Normal.Image = Scale90(b);
                     pictureBox_T1_Normal.Refresh();
@@ -488,16 +433,24 @@ namespace Light
             drawn = false;
         }
 
-        private void button_T2_Normal_Click(object sender, EventArgs e)
+        private void Button_T2_Normal_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            if (MessageBox.Show("Do you want to load a default(flat) normal map?", "Remove normal map?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                triangles[1].normalMap = new NormalMap();
+                triangles[1].Disturb(pictureBox);
+                pictureBox_T2_Normal.Image = null;
+                pictureBox_T2_Normal.Refresh();
+            }
+            else using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Select Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
                 if (dlg.ShowDialog() == DialogResult.OK)
                 {
+                    bool up = MessageBox.Show("Is the y(green) axis on image pointed up?", "Axis settings", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes;
                     Bitmap b = new Bitmap(dlg.FileName);
-                    triangles[1].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+                    triangles[1].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), up);
                     triangles[1].Disturb(pictureBox);
                     pictureBox_T2_Normal.Image = Scale90(b);
                     pictureBox_T2_Normal.Refresh();
@@ -508,7 +461,14 @@ namespace Light
 
         private void Button_T1_Height_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            if (MessageBox.Show("Do you want to load a default(flat) height map?", "Remove height map?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                triangles[0].heightMap = new HeightMap();
+                triangles[0].Disturb(pictureBox);
+                pictureBox_T1_Height.Image = null;
+                pictureBox_T1_Height.Refresh();
+            }
+            else using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
@@ -535,7 +495,14 @@ namespace Light
 
         private void Button_T2_Height_Click(object sender, EventArgs e)
         {
-            using (OpenFileDialog dlg = new OpenFileDialog())
+            if (MessageBox.Show("Do you want to load a default(flat) height map?", "Remove height map?", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                triangles[1].heightMap = new HeightMap();
+                triangles[1].Disturb(pictureBox);
+                pictureBox_T2_Height.Image = null;
+                pictureBox_T2_Height.Refresh();
+            }
+            else using (OpenFileDialog dlg = new OpenFileDialog())
             {
                 dlg.Title = "Open Image";
                 dlg.Filter = "bmp files (*.bmp)|*.bmp";
@@ -613,7 +580,7 @@ namespace Light
             }
         }
 
-        private void textBox_T2_Weight_TextChanged(object sender, EventArgs e)
+        private void TextBox_T2_Weight_TextChanged(object sender, EventArgs e)
         {
             if (Double.TryParse(textBox_T2_Weight.Text, out double d) && d >= 0 && d <= 1)
             {
@@ -646,6 +613,110 @@ namespace Light
             {
                 textBox_T2_Weight.Text = triangles[1].phongWeight.ToString();
             }
+        }
+
+        private void CrystalTreadPlateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.Crystal_Texture;
+            triangles[0].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            pictureBox_T1_Color.Image = Scale90(b);
+            triangles[0].heightMap = new HeightMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            b = Scale90(b);
+            for (int i = 0; i < b.Width; i++)
+            {
+                for (int j = 0; j < b.Height; j++)
+                {
+                    int k = (int)(b.GetPixel(i, j).GetBrightness() * 255);
+                    b.SetPixel(i, j, Color.FromArgb(k, k, k));
+                }
+            }
+            pictureBox_T1_Height.Image = b;
+            b = Properties.Resources.Crystal_Normal;
+            triangles[0].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), false);
+            triangles[0].Disturb(pictureBox);
+            pictureBox_T1_Normal.Image = Scale90(b);
+            b = Properties.Resources.TreadPlate_Texture;
+            triangles[1].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            pictureBox_T2_Color.Image = Scale90(b);
+            triangles[1].heightMap = new HeightMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            b = Scale90(b);
+            for (int i = 0; i < b.Width; i++)
+            {
+                for (int j = 0; j < b.Height; j++)
+                {
+                    int k = (int)(b.GetPixel(i, j).GetBrightness() * 255);
+                    b.SetPixel(i, j, Color.FromArgb(k, k, k));
+                }
+            }
+            pictureBox_T2_Height.Image = b;
+            b = Properties.Resources.TreadPlate_Normal;
+            triangles[1].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), false);
+            triangles[1].Disturb(pictureBox);
+            pictureBox_T2_Normal.Image = Scale90(b);
+            triangles[0].phongFactor = 4;
+            triangles[0].phongWeight = 0.7;
+            triangles[1].phongFactor = 6;
+            triangles[1].phongWeight = 0.6;
+            textBox_T1_Factor.Text = triangles[0].phongFactor.ToString();
+            textBox_T2_Factor.Text = triangles[1].phongFactor.ToString();
+            textBox_T1_Weight.Text = triangles[0].phongWeight.ToString();
+            textBox_T2_Weight.Text = triangles[1].phongWeight.ToString();
+            textBox_T1_Factor.Refresh();
+            textBox_T2_Factor.Refresh();
+            textBox_T1_Weight.Refresh();
+            textBox_T2_Weight.Refresh();
+            pictureBox_T1_Color.Refresh();
+            pictureBox_T1_Height.Refresh();
+            pictureBox_T1_Normal.Refresh();
+            pictureBox_T2_Color.Refresh();
+            pictureBox_T2_Height.Refresh();
+            pictureBox_T2_Normal.Refresh();
+            drawn = false;
+        }
+
+        private void GlossyMattToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Bitmap b = Properties.Resources.Metal_Texture;
+            triangles[0].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            triangles[1].texture = new DirectBitmap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            pictureBox_T1_Color.Image = pictureBox_T2_Color.Image = Scale90(b);
+            triangles[0].heightMap = new HeightMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            triangles[1].heightMap = new HeightMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height));
+            b = Scale90(b);
+            for (int i = 0; i < b.Width; i++)
+            {
+                for (int j = 0; j < b.Height; j++)
+                {
+                    int k = (int)(b.GetPixel(i, j).GetBrightness() * 255);
+                    b.SetPixel(i, j, Color.FromArgb(k, k, k));
+                }
+            }
+            pictureBox_T1_Height.Image = pictureBox_T2_Height.Image = b;
+            b = Properties.Resources.Small_Balls;
+            triangles[0].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), true);
+            triangles[1].normalMap = new NormalMap(b, Math.Min(pictureBox.Width, b.Width), Math.Min(pictureBox.Height, b.Height), true);
+            triangles[0].Disturb(pictureBox);
+            triangles[1].Disturb(pictureBox);
+            pictureBox_T1_Normal.Image = pictureBox_T2_Normal.Image = Scale90(b);
+            triangles[0].phongFactor = 3;
+            triangles[0].phongWeight = 0.8;
+            triangles[1].phongFactor = 4;
+            triangles[1].phongWeight = 0.2;
+            textBox_T1_Factor.Text = triangles[0].phongFactor.ToString();
+            textBox_T2_Factor.Text = triangles[1].phongFactor.ToString();
+            textBox_T1_Weight.Text = triangles[0].phongWeight.ToString();
+            textBox_T2_Weight.Text = triangles[1].phongWeight.ToString();
+            textBox_T1_Factor.Refresh();
+            textBox_T2_Factor.Refresh();
+            textBox_T1_Weight.Refresh();
+            textBox_T2_Weight.Refresh();
+            pictureBox_T1_Color.Refresh();
+            pictureBox_T1_Height.Refresh();
+            pictureBox_T1_Normal.Refresh();
+            pictureBox_T2_Color.Refresh();
+            pictureBox_T2_Height.Refresh();
+            pictureBox_T2_Normal.Refresh();
+            drawn = false;
         }
     }
 }

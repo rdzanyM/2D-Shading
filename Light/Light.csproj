@@ -93,5 +93,11 @@
   <ItemGroup>
     <None Include="Resources\Crystal_Normal.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Small_Balls.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Metal_Texture.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

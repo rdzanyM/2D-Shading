@@ -30,14 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.triangle1ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exampleToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.crystalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treadPlateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.triangle2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.exampleToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.crystalToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.treadPlateToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.examplesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.crystalTreadPlateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.glossyMattToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -54,15 +49,12 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Height = new System.Windows.Forms.Button();
-            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Normal = new System.Windows.Forms.Button();
-            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Color = new System.Windows.Forms.Button();
-            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
@@ -78,7 +70,6 @@
             this.radioButton_Animated = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.button_Light_Color = new System.Windows.Forms.Button();
-            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -96,21 +87,25 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Height = new System.Windows.Forms.Button();
-            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Normal = new System.Windows.Forms.Button();
-            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Color = new System.Windows.Forms.Button();
-            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
+            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
+            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
+            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
+            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
+            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
+            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
+            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -122,24 +117,24 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).BeginInit();
             this.tableLayoutPanel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -147,80 +142,40 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.triangle1ToolStripMenuItem,
-            this.triangle2ToolStripMenuItem});
+            this.examplesToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(1184, 24);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // triangle1ToolStripMenuItem
+            // examplesToolStripMenuItem
             // 
-            this.triangle1ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exampleToolStripMenuItem});
-            this.triangle1ToolStripMenuItem.Name = "triangle1ToolStripMenuItem";
-            this.triangle1ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.triangle1ToolStripMenuItem.Text = "Triangle1";
+            this.examplesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.crystalTreadPlateToolStripMenuItem,
+            this.glossyMattToolStripMenuItem});
+            this.examplesToolStripMenuItem.Name = "examplesToolStripMenuItem";
+            this.examplesToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
+            this.examplesToolStripMenuItem.Text = "Examples";
             // 
-            // exampleToolStripMenuItem
+            // crystalTreadPlateToolStripMenuItem
             // 
-            this.exampleToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crystalToolStripMenuItem,
-            this.treadPlateToolStripMenuItem});
-            this.exampleToolStripMenuItem.Name = "exampleToolStripMenuItem";
-            this.exampleToolStripMenuItem.Size = new System.Drawing.Size(118, 22);
-            this.exampleToolStripMenuItem.Text = "Example";
+            this.crystalTreadPlateToolStripMenuItem.Name = "crystalTreadPlateToolStripMenuItem";
+            this.crystalTreadPlateToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.crystalTreadPlateToolStripMenuItem.Text = "Crystal/TreadPlate";
+            this.crystalTreadPlateToolStripMenuItem.Click += new System.EventHandler(this.CrystalTreadPlateToolStripMenuItem_Click);
             // 
-            // crystalToolStripMenuItem
+            // glossyMattToolStripMenuItem
             // 
-            this.crystalToolStripMenuItem.Name = "crystalToolStripMenuItem";
-            this.crystalToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.crystalToolStripMenuItem.Text = "Crystal";
-            this.crystalToolStripMenuItem.Click += new System.EventHandler(this.T1_Crystal_Click);
-            // 
-            // treadPlateToolStripMenuItem
-            // 
-            this.treadPlateToolStripMenuItem.Name = "treadPlateToolStripMenuItem";
-            this.treadPlateToolStripMenuItem.Size = new System.Drawing.Size(133, 22);
-            this.treadPlateToolStripMenuItem.Text = "Tread Plate";
-            this.treadPlateToolStripMenuItem.Click += new System.EventHandler(this.T1_TreadPlate_Click);
-            // 
-            // triangle2ToolStripMenuItem
-            // 
-            this.triangle2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.exampleToolStripMenuItem1});
-            this.triangle2ToolStripMenuItem.Name = "triangle2ToolStripMenuItem";
-            this.triangle2ToolStripMenuItem.Size = new System.Drawing.Size(68, 20);
-            this.triangle2ToolStripMenuItem.Text = "Triangle2";
-            // 
-            // exampleToolStripMenuItem1
-            // 
-            this.exampleToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.crystalToolStripMenuItem1,
-            this.treadPlateToolStripMenuItem1});
-            this.exampleToolStripMenuItem1.Name = "exampleToolStripMenuItem1";
-            this.exampleToolStripMenuItem1.Size = new System.Drawing.Size(118, 22);
-            this.exampleToolStripMenuItem1.Text = "Example";
-            // 
-            // crystalToolStripMenuItem1
-            // 
-            this.crystalToolStripMenuItem1.Name = "crystalToolStripMenuItem1";
-            this.crystalToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
-            this.crystalToolStripMenuItem1.Text = "Crystal";
-            this.crystalToolStripMenuItem1.Click += new System.EventHandler(this.T2_Crystal_Click);
-            // 
-            // treadPlateToolStripMenuItem1
-            // 
-            this.treadPlateToolStripMenuItem1.Name = "treadPlateToolStripMenuItem1";
-            this.treadPlateToolStripMenuItem1.Size = new System.Drawing.Size(133, 22);
-            this.treadPlateToolStripMenuItem1.Text = "Tread Plate";
-            this.treadPlateToolStripMenuItem1.Click += new System.EventHandler(this.T2_TreadPlate_Click);
+            this.glossyMattToolStripMenuItem.Name = "glossyMattToolStripMenuItem";
+            this.glossyMattToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
+            this.glossyMattToolStripMenuItem.Text = "Glossy/Matt";
+            this.glossyMattToolStripMenuItem.Click += new System.EventHandler(this.GlossyMattToolStripMenuItem_Click);
             // 
             // timer
             // 
             this.timer.Interval = 20;
-            this.timer.Tick += new System.EventHandler(this.timer_Tick);
+            this.timer.Tick += new System.EventHandler(this.Timer_Tick);
             // 
             // splitContainer1
             // 
@@ -381,7 +336,7 @@
             this.textBox_T2_Weight.Size = new System.Drawing.Size(94, 20);
             this.textBox_T2_Weight.TabIndex = 3;
             this.textBox_T2_Weight.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.textBox_T2_Weight.TextChanged += new System.EventHandler(this.textBox_T2_Weight_TextChanged);
+            this.textBox_T2_Weight.TextChanged += new System.EventHandler(this.TextBox_T2_Weight_TextChanged);
             this.textBox_T2_Weight.Leave += new System.EventHandler(this.TextBox_T2_Weight_Leave);
             // 
             // label_T2_PhongFactor
@@ -462,18 +417,6 @@
             this.button_T2_Height.UseVisualStyleBackColor = false;
             this.button_T2_Height.Click += new System.EventHandler(this.Button_T2_Height_Click);
             // 
-            // pictureBox_T2_Height
-            // 
-            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Height.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
-            this.pictureBox_T2_Height.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Height.TabIndex = 1;
-            this.pictureBox_T2_Height.TabStop = false;
-            // 
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -519,19 +462,7 @@
             this.button_T2_Normal.TabIndex = 2;
             this.button_T2_Normal.Text = "Change";
             this.button_T2_Normal.UseVisualStyleBackColor = false;
-            this.button_T2_Normal.Click += new System.EventHandler(this.button_T2_Normal_Click);
-            // 
-            // pictureBox_T2_Normal
-            // 
-            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
-            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Normal.TabIndex = 1;
-            this.pictureBox_T2_Normal.TabStop = false;
+            this.button_T2_Normal.Click += new System.EventHandler(this.Button_T2_Normal_Click);
             // 
             // label15
             // 
@@ -579,18 +510,6 @@
             this.button_T2_Color.Text = "Change";
             this.button_T2_Color.UseVisualStyleBackColor = false;
             this.button_T2_Color.Click += new System.EventHandler(this.Button_T2_Color_Click);
-            // 
-            // pictureBox_T2_Color
-            // 
-            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Color.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
-            this.pictureBox_T2_Color.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Color.TabIndex = 1;
-            this.pictureBox_T2_Color.TabStop = false;
             // 
             // label16
             // 
@@ -779,18 +698,6 @@
             this.button_Light_Color.Text = "Change";
             this.button_Light_Color.UseVisualStyleBackColor = false;
             this.button_Light_Color.Click += new System.EventHandler(this.Button_Light_Color_Click);
-            // 
-            // pictureBox_Light_Color
-            // 
-            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
-            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
-            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
-            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_Light_Color.TabIndex = 1;
-            this.pictureBox_Light_Color.TabStop = false;
             // 
             // label1
             // 
@@ -1027,18 +934,6 @@
             this.button_T1_Height.UseVisualStyleBackColor = false;
             this.button_T1_Height.Click += new System.EventHandler(this.Button_T1_Height_Click);
             // 
-            // pictureBox_T1_Height
-            // 
-            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Height.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
-            this.pictureBox_T1_Height.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Height.TabIndex = 1;
-            this.pictureBox_T1_Height.TabStop = false;
-            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1086,18 +981,6 @@
             this.button_T1_Normal.UseVisualStyleBackColor = false;
             this.button_T1_Normal.Click += new System.EventHandler(this.Button_T1_Normal_Click);
             // 
-            // pictureBox_T1_Normal
-            // 
-            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
-            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Normal.TabIndex = 1;
-            this.pictureBox_T1_Normal.TabStop = false;
-            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1144,18 +1027,6 @@
             this.button_T1_Color.Text = "Change";
             this.button_T1_Color.UseVisualStyleBackColor = false;
             this.button_T1_Color.Click += new System.EventHandler(this.Button_T1_Color_Click);
-            // 
-            // pictureBox_T1_Color
-            // 
-            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Color.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
-            this.pictureBox_T1_Color.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Color.TabIndex = 1;
-            this.pictureBox_T1_Color.TabStop = false;
             // 
             // label5
             // 
@@ -1221,6 +1092,90 @@
             this.panel8.Size = new System.Drawing.Size(328, 2);
             this.panel8.TabIndex = 15;
             // 
+            // pictureBox_T2_Height
+            // 
+            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
+            this.pictureBox_T2_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Height.TabIndex = 1;
+            this.pictureBox_T2_Height.TabStop = false;
+            // 
+            // pictureBox_T2_Normal
+            // 
+            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
+            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Normal.TabIndex = 1;
+            this.pictureBox_T2_Normal.TabStop = false;
+            // 
+            // pictureBox_T2_Color
+            // 
+            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
+            this.pictureBox_T2_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Color.TabIndex = 1;
+            this.pictureBox_T2_Color.TabStop = false;
+            // 
+            // pictureBox_Light_Color
+            // 
+            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
+            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
+            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
+            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
+            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_Light_Color.TabIndex = 1;
+            this.pictureBox_Light_Color.TabStop = false;
+            // 
+            // pictureBox_T1_Height
+            // 
+            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
+            this.pictureBox_T1_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Height.TabIndex = 1;
+            this.pictureBox_T1_Height.TabStop = false;
+            // 
+            // pictureBox_T1_Normal
+            // 
+            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
+            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Normal.TabIndex = 1;
+            this.pictureBox_T1_Normal.TabStop = false;
+            // 
+            // pictureBox_T1_Color
+            // 
+            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
+            this.pictureBox_T1_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Color.TabIndex = 1;
+            this.pictureBox_T1_Color.TabStop = false;
+            // 
             // pictureBox
             // 
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1229,9 +1184,9 @@
             this.pictureBox.Size = new System.Drawing.Size(855, 638);
             this.pictureBox.TabIndex = 0;
             this.pictureBox.TabStop = false;
-            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseDown);
-            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseMove);
-            this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.pictureBox_MouseUp);
+            this.pictureBox.MouseDown += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseDown);
+            this.pictureBox.MouseMove += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseMove);
+            this.pictureBox.MouseUp += new System.Windows.Forms.MouseEventHandler(this.PictureBox_MouseUp);
             // 
             // Form1
             // 
@@ -1241,9 +1196,12 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1200, 700);
+            this.MinimumSize = new System.Drawing.Size(1200, 700);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Light";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.splitContainer1.Panel1.ResumeLayout(false);
@@ -1260,13 +1218,10 @@
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -1274,7 +1229,6 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -1283,12 +1237,16 @@
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
@@ -1300,11 +1258,7 @@
 
         private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem triangle1ToolStripMenuItem;
         private System.Windows.Forms.Timer timer;
-        private System.Windows.Forms.ToolStripMenuItem exampleToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem crystalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem treadPlateToolStripMenuItem;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.Label label1;
@@ -1369,10 +1323,6 @@
         private System.Windows.Forms.Panel panel11;
         private System.Windows.Forms.Panel panel12;
         private System.Windows.Forms.Panel panel13;
-        private System.Windows.Forms.ToolStripMenuItem triangle2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem exampleToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem crystalToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem treadPlateToolStripMenuItem1;
         private System.Windows.Forms.TextBox textBox_T1_Factor;
         private System.Windows.Forms.TextBox textBox_T2_Factor;
         private System.Windows.Forms.TextBox textBox_T1_Weight;
@@ -1381,6 +1331,9 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.ToolStripMenuItem examplesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem crystalTreadPlateToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem glossyMattToolStripMenuItem;
     }
 }
 
