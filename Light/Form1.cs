@@ -82,7 +82,7 @@ namespace Light
         /// <summary>
         /// Vertices of two triangles
         /// </summary>
-        Point[] points = { new Point(10, 10), new Point(20, 400), new Point(666, 20), new Point(150, 322), new Point(700, 480), new Point(666, 21) };
+        Point[] points = { new Point(10, 10), new Point(20, 500), new Point(800, 50), new Point(300, 600), new Point(800, 600), new Point(666, 20) };
 
         public Form1()
         {
