@@ -312,7 +312,7 @@ namespace Light
         private Bitmap Scale90(Bitmap b)
         {
             double d = b.Width / 90.0;
-            return new Bitmap(b as Image, 90, (int)(b.Width / d));
+            return new Bitmap(b as Image, 90, (int)(b.Height / d));
         }
 
         //Light
@@ -701,7 +701,7 @@ namespace Light
             triangles[0].phongFactor = 3;
             triangles[0].phongWeight = 0.8;
             triangles[1].phongFactor = 4;
-            triangles[1].phongWeight = 0.2;
+            triangles[1].phongWeight = 0.1;
             textBox_T1_Factor.Text = triangles[0].phongFactor.ToString();
             textBox_T2_Factor.Text = triangles[1].phongFactor.ToString();
             textBox_T1_Weight.Text = triangles[0].phongWeight.ToString();

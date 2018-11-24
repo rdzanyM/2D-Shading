@@ -49,12 +49,15 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel14 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Height = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
             this.label14 = new System.Windows.Forms.Label();
             this.tableLayoutPanel15 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Normal = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
             this.label15 = new System.Windows.Forms.Label();
             this.tableLayoutPanel16 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T2_Color = new System.Windows.Forms.Button();
+            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
             this.label16 = new System.Windows.Forms.Label();
             this.panel10 = new System.Windows.Forms.Panel();
             this.label17 = new System.Windows.Forms.Label();
@@ -70,6 +73,7 @@
             this.radioButton_Animated = new System.Windows.Forms.RadioButton();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.button_Light_Color = new System.Windows.Forms.Button();
+            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
@@ -87,25 +91,21 @@
             this.panel9 = new System.Windows.Forms.Panel();
             this.tableLayoutPanel8 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Height = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
             this.label7 = new System.Windows.Forms.Label();
             this.tableLayoutPanel7 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Normal = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
             this.label6 = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.button_T1_Color = new System.Windows.Forms.Button();
+            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.label5 = new System.Windows.Forms.Label();
             this.panel7 = new System.Windows.Forms.Panel();
             this.label4 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
-            this.pictureBox_T2_Height = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T2_Normal = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T2_Color = new System.Windows.Forms.PictureBox();
-            this.pictureBox_Light_Color = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Height = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Normal = new System.Windows.Forms.PictureBox();
-            this.pictureBox_T1_Color = new System.Windows.Forms.PictureBox();
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
@@ -117,24 +117,24 @@
             this.tableLayoutPanel12.SuspendLayout();
             this.tableLayoutPanel13.SuspendLayout();
             this.tableLayoutPanel14.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
             this.tableLayoutPanel15.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
             this.tableLayoutPanel16.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
             this.panel1.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel9.SuspendLayout();
             this.tableLayoutPanel10.SuspendLayout();
             this.tableLayoutPanel8.SuspendLayout();
-            this.tableLayoutPanel7.SuspendLayout();
-            this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).BeginInit();
+            this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).BeginInit();
+            this.tableLayoutPanel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
@@ -417,6 +417,18 @@
             this.button_T2_Height.UseVisualStyleBackColor = false;
             this.button_T2_Height.Click += new System.EventHandler(this.Button_T2_Height_Click);
             // 
+            // pictureBox_T2_Height
+            // 
+            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
+            this.pictureBox_T2_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Height.TabIndex = 1;
+            this.pictureBox_T2_Height.TabStop = false;
+            // 
             // label14
             // 
             this.label14.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -464,6 +476,18 @@
             this.button_T2_Normal.UseVisualStyleBackColor = false;
             this.button_T2_Normal.Click += new System.EventHandler(this.Button_T2_Normal_Click);
             // 
+            // pictureBox_T2_Normal
+            // 
+            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
+            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Normal.TabIndex = 1;
+            this.pictureBox_T2_Normal.TabStop = false;
+            // 
             // label15
             // 
             this.label15.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -510,6 +534,18 @@
             this.button_T2_Color.Text = "Change";
             this.button_T2_Color.UseVisualStyleBackColor = false;
             this.button_T2_Color.Click += new System.EventHandler(this.Button_T2_Color_Click);
+            // 
+            // pictureBox_T2_Color
+            // 
+            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T2_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
+            this.pictureBox_T2_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T2_Color.TabIndex = 1;
+            this.pictureBox_T2_Color.TabStop = false;
             // 
             // label16
             // 
@@ -698,6 +734,18 @@
             this.button_Light_Color.Text = "Change";
             this.button_Light_Color.UseVisualStyleBackColor = false;
             this.button_Light_Color.Click += new System.EventHandler(this.Button_Light_Color_Click);
+            // 
+            // pictureBox_Light_Color
+            // 
+            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
+            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
+            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
+            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
+            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_Light_Color.TabIndex = 1;
+            this.pictureBox_Light_Color.TabStop = false;
             // 
             // label1
             // 
@@ -934,6 +982,18 @@
             this.button_T1_Height.UseVisualStyleBackColor = false;
             this.button_T1_Height.Click += new System.EventHandler(this.Button_T1_Height_Click);
             // 
+            // pictureBox_T1_Height
+            // 
+            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Height.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
+            this.pictureBox_T1_Height.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Height.TabIndex = 1;
+            this.pictureBox_T1_Height.TabStop = false;
+            // 
             // label7
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -981,6 +1041,18 @@
             this.button_T1_Normal.UseVisualStyleBackColor = false;
             this.button_T1_Normal.Click += new System.EventHandler(this.Button_T1_Normal_Click);
             // 
+            // pictureBox_T1_Normal
+            // 
+            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
+            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Normal.TabIndex = 1;
+            this.pictureBox_T1_Normal.TabStop = false;
+            // 
             // label6
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Left;
@@ -1027,6 +1099,18 @@
             this.button_T1_Color.Text = "Change";
             this.button_T1_Color.UseVisualStyleBackColor = false;
             this.button_T1_Color.Click += new System.EventHandler(this.Button_T1_Color_Click);
+            // 
+            // pictureBox_T1_Color
+            // 
+            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBox_T1_Color.Location = new System.Drawing.Point(124, 3);
+            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
+            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
+            this.pictureBox_T1_Color.Size = new System.Drawing.Size(89, 38);
+            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBox_T1_Color.TabIndex = 1;
+            this.pictureBox_T1_Color.TabStop = false;
             // 
             // label5
             // 
@@ -1092,90 +1176,6 @@
             this.panel8.Size = new System.Drawing.Size(328, 2);
             this.panel8.TabIndex = 15;
             // 
-            // pictureBox_T2_Height
-            // 
-            this.pictureBox_T2_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Height.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Height.Name = "pictureBox_T2_Height";
-            this.pictureBox_T2_Height.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Height.TabIndex = 1;
-            this.pictureBox_T2_Height.TabStop = false;
-            // 
-            // pictureBox_T2_Normal
-            // 
-            this.pictureBox_T2_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Normal.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Normal.Name = "pictureBox_T2_Normal";
-            this.pictureBox_T2_Normal.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Normal.TabIndex = 1;
-            this.pictureBox_T2_Normal.TabStop = false;
-            // 
-            // pictureBox_T2_Color
-            // 
-            this.pictureBox_T2_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T2_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T2_Color.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T2_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T2_Color.Name = "pictureBox_T2_Color";
-            this.pictureBox_T2_Color.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T2_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T2_Color.TabIndex = 1;
-            this.pictureBox_T2_Color.TabStop = false;
-            // 
-            // pictureBox_Light_Color
-            // 
-            this.pictureBox_Light_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_Light_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_Light_Color.Location = new System.Drawing.Point(100, 10);
-            this.pictureBox_Light_Color.Margin = new System.Windows.Forms.Padding(10);
-            this.pictureBox_Light_Color.Name = "pictureBox_Light_Color";
-            this.pictureBox_Light_Color.Size = new System.Drawing.Size(112, 24);
-            this.pictureBox_Light_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_Light_Color.TabIndex = 1;
-            this.pictureBox_Light_Color.TabStop = false;
-            // 
-            // pictureBox_T1_Height
-            // 
-            this.pictureBox_T1_Height.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Height.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Height.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Height.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Height.Name = "pictureBox_T1_Height";
-            this.pictureBox_T1_Height.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Height.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Height.TabIndex = 1;
-            this.pictureBox_T1_Height.TabStop = false;
-            // 
-            // pictureBox_T1_Normal
-            // 
-            this.pictureBox_T1_Normal.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Normal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Normal.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Normal.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Normal.Name = "pictureBox_T1_Normal";
-            this.pictureBox_T1_Normal.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Normal.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Normal.TabIndex = 1;
-            this.pictureBox_T1_Normal.TabStop = false;
-            // 
-            // pictureBox_T1_Color
-            // 
-            this.pictureBox_T1_Color.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.pictureBox_T1_Color.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pictureBox_T1_Color.Location = new System.Drawing.Point(124, 3);
-            this.pictureBox_T1_Color.Margin = new System.Windows.Forms.Padding(9, 3, 9, 3);
-            this.pictureBox_T1_Color.Name = "pictureBox_T1_Color";
-            this.pictureBox_T1_Color.Size = new System.Drawing.Size(89, 38);
-            this.pictureBox_T1_Color.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
-            this.pictureBox_T1_Color.TabIndex = 1;
-            this.pictureBox_T1_Color.TabStop = false;
-            // 
             // pictureBox
             // 
             this.pictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -1218,10 +1218,13 @@
             this.tableLayoutPanel13.PerformLayout();
             this.tableLayoutPanel14.ResumeLayout(false);
             this.tableLayoutPanel14.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
             this.tableLayoutPanel15.ResumeLayout(false);
             this.tableLayoutPanel15.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
             this.tableLayoutPanel16.ResumeLayout(false);
             this.tableLayoutPanel16.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
             this.panel1.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
@@ -1229,6 +1232,7 @@
             this.tableLayoutPanel4.PerformLayout();
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
             this.tableLayoutPanel9.ResumeLayout(false);
@@ -1237,16 +1241,12 @@
             this.tableLayoutPanel10.PerformLayout();
             this.tableLayoutPanel8.ResumeLayout(false);
             this.tableLayoutPanel8.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
             this.tableLayoutPanel7.ResumeLayout(false);
             this.tableLayoutPanel7.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
             this.tableLayoutPanel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Height)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Normal)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T2_Color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_Light_Color)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Height)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Normal)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox_T1_Color)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
