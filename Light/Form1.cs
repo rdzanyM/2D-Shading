@@ -211,7 +211,7 @@ namespace Light
                         specularReflection = 0;
                     else for (int p = 0; p < triangle.phongFactor; p++)
                         specularReflection *= specularReflection;
-                    bitmap.SetPixel(i, yy, Multiply(triangle.texture.GetPixel(i, yy), lightColor, specularReflection * triangle.phongWeight + diffuseReflection * (1 - triangle.phongWeight)));
+                    bitmap.SetPixel(i, yy, Multiply(triangle.texture.GetPixel(i, yy), lightColor, (specularReflection * triangle.phongWeight + diffuseReflection * (1 - triangle.phongWeight)) / 255));
                 }
             }
 
@@ -234,7 +234,7 @@ namespace Light
 
             Color Multiply(Color c1, Color c2, double d)
             {
-                return Color.FromArgb((int)(d * c1.R * c2.R / 255), (int)(d * c1.G * c2.G / 255), (int)(d * c1.B * c2.B / 255));
+                return Color.FromArgb((int)(c1.R * c2.R * d), (int)(c1.G * c2.G * d), (int)(c1.B * c2.B * d));
             }
 
             double Cos(double[] v1, double[] v2) //v1, v2 are vectors of length 1
